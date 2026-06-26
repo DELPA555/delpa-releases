@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DELPA Gestión PRO — Sistema de gestión para tiendas de ropa · Argentina</title>
+<meta name="description" content="El sistema de gestión más completo para tiendas de ropa en Argentina. Ventas, stock por talle y color, facturación AFIP, Mercado Pago QR, Tienda Nube, consignación, IA y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#E91E8C;--pink-dim:#9C1260;--pink-glow:rgba(233,30,140,0.12);--bg:#0A0A0A;--bg2:#111111;--bg3:#181818;--bg4:#222222;--text:#FFFFFF;--text2:#9CA3AF;--text3:#4B5563;--border:#252525;--green:#34D399;--red:#EF4444;--yellow:#F59E0B}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#fff;text-decoration:none}
+.logo span{color:var(--pink)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--pink)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.nav-domain{color:var(--text3);font-size:12px;font-family:'JetBrains Mono',monospace}
+.nav-wa{display:flex;align-items:center;gap:8px;color:var(--green);font-size:13px;font-weight:600;text-decoration:none}
+.btn-nav{background:var(--pink);color:#fff;padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.btn-nav:hover{background:var(--pink-dim)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(233,30,140,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:50px 50px;opacity:0.25;pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:6px 16px;font-size:12px;color:var(--text2);margin-bottom:24px;font-family:'JetBrains Mono',monospace}
+.badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,4.5vw,64px);font-weight:700;line-height:1.05;margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero-sub{font-size:18px;color:var(--text2);margin-bottom:24px;line-height:1.7;max-width:500px}
+.hero-made{background:rgba(233,30,140,0.08);border:1px solid rgba(233,30,140,0.2);border-radius:12px;padding:16px 20px;margin-bottom:32px;max-width:500px}
+.hero-made p{font-size:15px;color:var(--text);line-height:1.6;font-style:italic}
+.hero-made span{color:var(--pink);font-weight:600;font-style:normal}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn-p{background:var(--pink);color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{background:var(--pink-dim);transform:translateY(-1px)}
+.btn-s{background:transparent;color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-s:hover{border-color:var(--pink);color:var(--pink)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--text2);font-family:'JetBrains Mono',monospace}
+.chip.active{border-color:var(--pink);color:var(--pink)}
+.terminal{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 0 80px var(--pink-glow);font-family:'JetBrains Mono',monospace;font-size:13px}
+.t-bar{display:flex;gap:6px;margin-bottom:18px}
+.t-dot{width:11px;height:11px;border-radius:50%}
+.t-line{line-height:2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-prompt{color:var(--pink)}.t-cmd{color:#A3E635}.t-ok{color:var(--green)}.t-warn{color:var(--yellow)}.t-out{color:var(--text2)}
+.t-cursor{display:inline-block;width:2px;height:14px;background:var(--pink);animation:blink 1s infinite;vertical-align:middle;margin-left:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+#typed{color:#fff}
+.stats-bar{padding:60px 40px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:32px;text-align:center}
+.s-num{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:var(--pink);line-height:1}
+.s-lbl{color:var(--text2);font-size:12px;margin-top:6px;line-height:1.4}
+section{padding:100px 40px}
+.container{max-width:1200px;margin:0 auto}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink);text-transform:uppercase;letter-spacing:3px;margin-bottom:14px}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.15;letter-spacing:-0.5px;margin-bottom:16px}
+.sec-sub{color:var(--text2);font-size:17px;max-width:580px;line-height:1.7}
+.pink-bar{width:48px;height:3px;background:var(--pink);border-radius:2px;margin:20px 0 56px}
+.fade{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+.unique-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px}
+.unique-card{background:var(--bg3);border:1px solid var(--border);border-radius:18px;padding:32px;position:relative;overflow:hidden;transition:all 0.3s}
+.unique-card.highlight{border-color:var(--pink);box-shadow:0 0 50px var(--pink-glow)}
+.unique-card:hover{transform:translateY(-4px);border-color:var(--pink)}
+.uc-icon{font-size:36px;margin-bottom:16px}
+.uc-badge{display:inline-block;background:var(--pink);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+.uc-title{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;margin-bottom:10px}
+.uc-desc{color:var(--text2);font-size:14px;line-height:1.7}
+.uc-list{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.uc-list li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:8px}
+.uc-list li::before{content:'→';color:var(--pink);font-weight:700;flex-shrink:0;margin-top:1px}
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mod-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:22px;transition:all 0.25s}
+.mod-card:hover{border-color:var(--pink);transform:translateY(-3px)}
+.mod-icon{font-size:26px;margin-bottom:12px}
+.mod-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px}
+.mod-desc{color:var(--text2);font-size:13px;line-height:1.6}
+.mod-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.pill{background:var(--bg4);border:1px solid var(--border);border-radius:100px;padding:2px 8px;font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.compare-wrap{overflow-x:auto;margin-top:56px}
+table.comp{width:100%;border-collapse:collapse;min-width:700px}
+.comp th{padding:14px 20px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;text-align:center}
+.comp th.col-delpa{background:var(--pink);border-radius:12px 12px 0 0}
+.comp td{padding:13px 20px;border-bottom:1px solid var(--border);font-size:14px;text-align:center;color:var(--text2)}
+.comp td:first-child{text-align:left;color:var(--text);font-weight:500}
+.comp td.col-delpa{background:rgba(233,30,140,0.06);color:var(--pink);font-weight:600}
+.comp tr:hover td{background:var(--bg3)}
+.ck{color:var(--green);font-size:17px}.cx{color:var(--red);font-size:17px}.cp{color:var(--yellow);font-size:12px;font-style:italic}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.feature-visual{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:32px}
+.progress-item{margin-bottom:24px}
+.progress-label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px}
+.progress-label span:first-child{color:var(--text)}
+.progress-label span:last-child{color:var(--pink);font-weight:700;font-family:'JetBrains Mono',monospace}
+.progress-bar{height:8px;background:var(--bg4);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;transition:width 1.5s ease}
+.fill-pink{background:linear-gradient(90deg,var(--pink-dim),var(--pink))}
+.fill-yellow{background:linear-gradient(90deg,#92400e,var(--yellow))}
+.fill-green{background:linear-gradient(90deg,#065f46,var(--green))}
+.alert-box{background:rgba(233,30,140,0.1);border:1px solid rgba(233,30,140,0.3);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--pink);display:flex;align-items:center;gap:10px;margin-top:16px}
+.iva-box{background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.25);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--green);display:flex;align-items:center;gap:10px;margin-top:12px}
+.ai-cards{display:flex;flex-direction:column;gap:12px}
+.ai-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
+.ai-card-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.ai-card-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.ai-card-text{font-size:13px;color:var(--text2);line-height:1.6}
+.ai-card.urgent{border-color:var(--red)}.ai-card.warn{border-color:var(--yellow)}.ai-card.ok{border-color:var(--green)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px}
+.test-stars{color:var(--pink);font-size:16px;margin-bottom:14px}
+.test-text{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-av{width:38px;height:38px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;flex-shrink:0}
+.test-name{font-weight:600;font-size:14px}.test-store{color:var(--text2);font-size:12px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:36px;transition:all 0.3s;position:relative}
+.plan.hot{border-color:var(--pink);box-shadow:0 0 60px var(--pink-glow)}
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:11px;font-weight:700;padding:3px 16px;border-radius:100px;white-space:nowrap}
+.plan-name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px}
+.plan-price{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:var(--pink);margin:14px 0;line-height:1}
+.plan-price small{font-size:14px;color:var(--text2);font-weight:400}
+.plan-desc{color:var(--text2);font-size:14px;margin-bottom:24px}
+.plan-list{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:10px}
+.plan-list li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.plan-list li::before{content:'✓';color:var(--pink);font-weight:700;flex-shrink:0}
+.plan-btn{display:block;text-align:center;padding:13px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;transition:all 0.2s}
+.plan-btn.p{background:var(--pink);color:#fff}.plan-btn.p:hover{background:var(--pink-dim)}
+.plan-btn.s{border:1px solid var(--border);color:var(--text)}.plan-btn.s:hover{border-color:var(--pink);color:var(--pink)}
+.faq-wrap{max-width:820px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;font-weight:600;padding:22px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q:hover{color:var(--pink)}
+.faq-arr{color:var(--pink);font-size:22px;transition:transform 0.3s;flex-shrink:0}
+.faq-item.open .faq-arr{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;color:var(--text2);font-size:14px;line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:all 0.3s}
+.blog-card:hover{border-color:var(--pink);transform:translateY(-4px)}
+.blog-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:56px}
+.bi1{background:linear-gradient(135deg,#1a0812,#3d0a20)}.bi2{background:linear-gradient(135deg,#0a1a0d,#0d3318)}.bi3{background:linear-gradient(135deg,#0a0d1a,#0e1540)}
+.blog-body{padding:22px}
+.blog-cat{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--pink);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.blog-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;line-height:1.4}
+.blog-exc{color:var(--text2);font-size:13px;line-height:1.6}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-left h3{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;margin-bottom:16px}
+.contact-left p{color:var(--text2);font-size:16px;line-height:1.7;margin-bottom:32px}
+.clinks{display:flex;flex-direction:column;gap:14px}
+.clink{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:inherit;transition:all 0.2s}
+.clink:hover{border-color:var(--pink)}
+.clink-icon{font-size:22px}
+.clink-text strong{display:block;font-size:14px;font-weight:600}
+.clink-text span{color:var(--text2);font-size:12px}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{font-size:13px;font-weight:500;color:var(--text2)}
+.fg input,.fg textarea,.fg select{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--pink)}
+.fg textarea{resize:vertical;min-height:110px}
+.fg select option{background:var(--bg3)}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 40px 28px}
+.ft-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-brand p{color:var(--text2);font-size:13px;margin-top:12px;line-height:1.7;max-width:280px}
+.ft-domain{font-family:'JetBrains Mono',monospace;color:var(--pink);font-size:13px;margin-top:8px}
+.ft-col h4{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;margin-bottom:16px;color:var(--text)}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col ul a{color:var(--text2);text-decoration:none;font-size:13px;transition:color 0.2s}
+.ft-col ul a:hover{color:var(--pink)}
+.ft-bottom{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-bottom p,.ft-bottom a{color:var(--text3);font-size:12px;text-decoration:none}
+.ft-bottom a:hover{color:var(--pink)}
+@media(max-width:1024px){.hero-inner,.two-col,.unique-grid,.contact-grid{grid-template-columns:1fr}.modules-grid{grid-template-columns:repeat(2,1fr)}.ft-grid{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links,.nav-domain{display:none}section{padding:60px 20px}.stats-bar{padding:48px 20px}.stats-inner{grid-template-columns:repeat(2,1fr)}.modules-grid,.test-grid,.plans-grid,.blog-grid{grid-template-columns:1fr}.hero{padding:100px 20px 60px}footer{padding:48px 20px 24px}.ft-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">DELPA<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#unico">Lo único</a></li>
+    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#fiscal">Fiscal & IA</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-domain">delpagestion.com.ar</span>
+    <a href="https://wa.me/5491138574444" class="nav-wa" target="_blank">💬 +54 11 3857-4444</a>
+    <a href="#contacto" class="btn-nav">Demo gratis →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="fade">
+      <div class="hero-badge"><span class="badge-dot"></span> v1.6.6 · Hecho en Argentina · Actualización automática</div>
+      <h1>El sistema de gestión que tu <em>tienda de ropa</em> necesitaba</h1>
+      <p class="hero-sub">Vendé más, organizate mejor y llevá el control total de tu negocio desde una sola pantalla. Sin suscripciones abusivas, sin internet obligatorio, sin límites.</p>
+      <div class="hero-made">
+        <p><span>Hecho por comerciantes que viven el comercio todos los días.</span><br>Sabemos lo que buscás porque nosotros también lo buscamos. Cada función existe porque la necesitamos en nuestro propio negocio.</p>
+      </div>
+      <div class="hero-btns">
+        <a href="https://wa.me/5491138574444?text=Hola,%20quiero%20una%20demo%20de%20DELPA%20Gesti%C3%B3n%20PRO" target="_blank" class="btn-p">💬 Quiero una demo gratis</a>
+        <a href="#modulos" class="btn-s">Ver todo lo que incluye</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip active">✓ AFIP/ARCA</span>
+        <span class="chip active">✓ Mercado Pago QR</span>
+        <span class="chip active">✓ Tienda Nube</span>
+        <span class="chip">✓ Sin internet</span>
+        <span class="chip">✓ Auto-update</span>
+        <span class="chip">✓ Backup Drive</span>
+        <span class="chip">✓ IA incluida</span>
+      </div>
+    </div>
+    <div class="terminal fade">
+      <div class="t-bar">
+        <div class="t-dot" style="background:#FF5F57"></div>
+        <div class="t-dot" style="background:#FFBD2E"></div>
+        <div class="t-dot" style="background:#28CA41"></div>
+      </div>
+      <div class="t-line"><span class="t-prompt">delpa</span><span class="t-out"> $ </span><span class="t-cmd">inicio del día</span></div>
+      <div class="t-line"><span class="t-ok">✓</span><span class="t-out"> Caja abierta: Turno mañana</span></div>
+      <div class="t-line"><span class="t-ok">✓</span><span class="t-out"> Stock sincronizado: Tienda Nube</span></div>
+      <div class="t-line"><span class="t-ok">✓</span><span class="t-out"> 3 pedidos nuevos para procesar</span></div>
+      <div class="t-line"><span class="t-warn">⚠</span><span class="t-out"> Jean T.38 sin stock en 2 días</span></div>
+      <div class="t-line"><span class="t-warn">⚠</span><span class="t-out"> Facturación: 78% del límite mensual</span></div>
+      <div class="t-line"><span class="t-ok">✓</span><span class="t-out"> IVA posición: $12.400 a favor</span></div>
+      <div class="t-line"><span class="t-ok">✓</span><span class="t-out"> Backup automático: Drive OK</span></div>
+      <div class="t-line"><span class="t-prompt">delpa</span><span class="t-out"> $ </span><span id="typed"></span><span class="t-cursor"></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="fade"><div class="s-num">18+</div><div class="s-lbl">Módulos integrados</div></div>
+    <div class="fade"><div class="s-num">100%</div><div class="s-lbl">Funciona offline</div></div>
+    <div class="fade"><div class="s-num">$0</div><div class="s-lbl">Costo por venta</div></div>
+    <div class="fade"><div class="s-num">A-K</div><div class="s-lbl">Categorías monotributo</div></div>
+    <div class="fade"><div class="s-num">v1.6</div><div class="s-lbl">Versión actual</div></div>
+    <div class="fade"><div class="s-num">AR</div><div class="s-lbl">Hecho en Argentina</div></div>
+  </div>
+</div>
+
+<section id="unico">
+  <div class="container">
+    <p class="eyebrow fade">// diferenciadores únicos</p>
+    <h2 class="sec-title fade">Lo que ningún otro sistema te da</h2>
+    <div class="pink-bar fade"></div>
+    <p class="sec-sub fade" style="margin-bottom:48px">Funcionalidades exclusivas pensadas por y para comerciantes de ropa en Argentina.</p>
+    <div class="unique-grid">
+      <div class="unique-card highlight fade">
+        <div class="uc-icon">🧠</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">IA de recomendaciones de compra</div>
+        <div class="uc-desc">Analiza tu historial de ventas y te dice exactamente qué reponer, cuánto y cuándo, antes de que te quedes sin stock.</div>
+        <ul class="uc-list">
+          <li>"Esta semana necesitás 5 Jean T.38 — siempre se venden los viernes"</li>
+          <li>"En 3 días te quedás sin T.40, pedí hoy"</li>
+          <li>Detecta talles con mucho stock y poca rotación</li>
+          <li>Predicción de quiebre por producto y talle</li>
+        </ul>
+      </div>
+      <div class="unique-card fade">
+        <div class="uc-icon">💰</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">Control total de ganancias reales</div>
+        <div class="uc-desc">No solo sabés lo que vendiste — sabés cuánto ganaste de verdad, descontando costos y gastos fijos.</div>
+        <ul class="uc-list">
+          <li>Rentabilidad real del mes (ventas − costos − gastos fijos)</li>
+          <li>Punto de equilibrio automático</li>
+          <li>Flujo de caja proyectado a 30 días</li>
+          <li>Comparativa de márgenes por proveedor</li>
+          <li>Calculadora de precio desde ganancia deseada</li>
+        </ul>
+      </div>
+      <div class="unique-card fade">
+        <div class="uc-icon">📊</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">Control fiscal inteligente</div>
+        <div class="uc-desc">Monotributistas y Responsables Inscriptos. Sabés tu situación fiscal en tiempo real, sin esperar al contador.</div>
+        <ul class="uc-list">
+          <li>Monotributistas: alerta al 80% y 95% del límite mensual/anual</li>
+          <li>RI: posición ante el IVA — débito vs crédito fiscal</li>
+          <li>Saldo a pagar o a favor calculado automáticamente</li>
+          <li>Proyección: en qué mes superarías el límite</li>
+          <li>Libro IVA exportable en formato SIAP</li>
+        </ul>
+      </div>
+      <div class="unique-card fade">
+        <div class="uc-icon">🤝</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">Gestión de consignación automática</div>
+        <div class="uc-desc">Vendés mercadería de un proveedor y la deuda se acumula sola. Liquidás cuando querés, sin planillas manuales.</div>
+        <ul class="uc-list">
+          <li>Marcás el producto como consignación al ingresar</li>
+          <li>Cada venta acumula automáticamente la deuda</li>
+          <li>"Le debés a Las Locas: $84.000 por 12 unidades vendidas"</li>
+          <li>Liquidación con PDF detallado para firmar</li>
+        </ul>
+      </div>
+      <div class="unique-card fade">
+        <div class="uc-icon">📦</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">Stock especular y productos sin rotación</div>
+        <div class="uc-desc">Detecta el dinero que tenés inmovilizado en productos que no se venden y te dice qué hacer con ellos.</div>
+        <ul class="uc-list">
+          <li>Productos sin movimiento en 30, 60 o 90 días</li>
+          <li>Capital inmovilizado: cuánto tenés invertido sin vender</li>
+          <li>Sugerencia automática: liquidar o transferir</li>
+          <li>Ranking de productos por velocidad de rotación</li>
+        </ul>
+      </div>
+      <div class="unique-card fade">
+        <div class="uc-icon">⭐</div>
+        <div class="uc-badge">ÚNICO</div>
+        <div class="uc-title">Score de salud del negocio</div>
+        <div class="uc-desc">Un número del 0 al 100 que te dice qué tan bien configurado y aprovechado está tu sistema en tiempo real.</div>
+        <ul class="uc-list">
+          <li>Mide configuración, stock, ventas, clientes y finanzas</li>
+          <li>Tips específicos para mejorar el score</li>
+          <li>Onboarding guiado para nuevos negocios</li>
+          <li>Alerta cuando hay algo importante sin configurar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos" style="background:var(--bg2)">
+  <div class="container">
+    <p class="eyebrow fade">// módulos completos</p>
+    <h2 class="sec-title fade">Todo en una sola app</h2>
+    <div class="pink-bar fade"></div>
+    <p class="sec-sub fade" style="margin-bottom:48px">18 módulos integrados. Sin extras, sin adicionales. Todo incluido desde el primer día.</p>
+    <div class="modules-grid">
+      <div class="mod-card fade"><div class="mod-icon">🏪</div><div class="mod-name">Punto de Venta</div><div class="mod-desc">Escaneá con lector USB, múltiples medios de pago, descuentos, cambios y devoluciones, modo escaneo rápido con sonidos.</div><div class="mod-pills"><span class="pill">Barcode</span><span class="pill">Multi-pago</span><span class="pill">Cambios</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">📦</div><div class="mod-name">Stock por Talle y Color</div><div class="mod-desc">Cada talle y color tiene su propio código de barras, stock y precio. Grilla visual para ingresar mercadería en segundos.</div><div class="mod-pills"><span class="pill">Talles</span><span class="pill">Colores</span><span class="pill">Variantes</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🧾</div><div class="mod-name">Facturación AFIP</div><div class="mod-desc">Factura electrónica con CAE automático. Monotributistas A-K y Responsables Inscriptos. Notas de crédito. WSFE producción.</div><div class="mod-pills"><span class="pill">CAE</span><span class="pill">WSFE</span><span class="pill">ARCA</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">💳</div><div class="mod-name">Mercado Pago QR</div><div class="mod-desc">QR dinámico presencial con nueva API Orders. Confirmación automática en pantalla. Sin intervención manual.</div><div class="mod-pills"><span class="pill">QR Dinámico</span><span class="pill">API Orders</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🛍️</div><div class="mod-name">Tienda Nube</div><div class="mod-desc">Sincronización de stock bidireccional con delta sync. Pedidos online directo a DELPA. Clientes sincronizados.</div><div class="mod-pills"><span class="pill">Delta Sync</span><span class="pill">Pedidos</span><span class="pill">OAuth</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">💰</div><div class="mod-name">Módulo Fiscal</div><div class="mod-desc">Monotributistas: control de límites con alertas. RI: posición ante el IVA mensual. Libro IVA en formato SIAP para el contador.</div><div class="mod-pills"><span class="pill">Monotributo</span><span class="pill">IVA RI</span><span class="pill">SIAP</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">👗</div><div class="mod-name">Consignación</div><div class="mod-desc">Mercadería de proveedores que se paga al vender. Deuda automática por cada venta. Liquidación con PDF para firmar.</div><div class="mod-pills"><span class="pill">Deuda auto</span><span class="pill">Liquidación</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🏷️</div><div class="mod-name">Etiquetas</div><div class="mod-desc">A4 (65 por hoja) y Brother QL-700. Código de barras por talle. Precio con y sin IVA. Selección múltiple con cantidad.</div><div class="mod-pills"><span class="pill">A4 x65</span><span class="pill">QL-700</span><span class="pill">2 precios</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">📊</div><div class="mod-name">Dashboard + IA</div><div class="mod-desc">Ventas local vs Tienda Nube, rentabilidad real, punto de equilibrio, flujo de caja, stock especular y predicciones.</div><div class="mod-pills"><span class="pill">IA</span><span class="pill">Proyecciones</span><span class="pill">Canales</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">📋</div><div class="mod-name">Reportes Avanzados</div><div class="mod-desc">Ranking de productos, análisis de colores, reporte de deudas, comparativa mensual, historial de precios, rentabilidad por categoría.</div><div class="mod-pills"><span class="pill">Ranking</span><span class="pill">Colores</span><span class="pill">PDF</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🎁</div><div class="mod-name">Fidelización y Puntos</div><div class="mod-desc">Puntos automáticos en cada venta. Se imprimen en el ticket. Vales de descuento con código único y validación.</div><div class="mod-pills"><span class="pill">Puntos</span><span class="pill">Vales</span><span class="pill">Ticket</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🔄</div><div class="mod-name">Inventario Físico</div><div class="mod-desc">Escaneá masivamente sin orden. DELPA compara contra el sistema y muestra diferencias. Ajuste de stock en un click.</div><div class="mod-pills"><span class="pill">Masivo</span><span class="pill">Comparativa</span><span class="pill">Ajuste</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🚚</div><div class="mod-name">Pedidos a Proveedores</div><div class="mod-desc">Grilla de talles por producto. PDF para enviar al proveedor. Al recibirlo se convierte en ingreso automáticamente.</div><div class="mod-pills"><span class="pill">Grilla</span><span class="pill">PDF</span><span class="pill">WhatsApp</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">💼</div><div class="mod-name">Caja con Turnos</div><div class="mod-desc">Múltiples turnos simultáneos (mañana/tarde). Cierre por turno con informe por email. Gastos cargables por vendedora.</div><div class="mod-pills"><span class="pill">Multi-turno</span><span class="pill">Email</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">👥</div><div class="mod-name">Clientes y CRM</div><div class="mod-desc">Historial de compras, cuenta corriente, puntos, cumpleaños, lista de espera con WhatsApp al llegar el talle pedido.</div><div class="mod-pills"><span class="pill">Historial</span><span class="pill">Cta cte</span><span class="pill">Espera</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">📁</div><div class="mod-name">Egreso de Mercadería</div><div class="mod-desc">Devolución a proveedores con grilla de talles. PDF para firmar. Descuento automático del stock. Crédito a favor calculado.</div><div class="mod-pills"><span class="pill">PDF</span><span class="pill">Grilla</span><span class="pill">Crédito</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">☁️</div><div class="mod-name">Backup Automático</div><div class="mod-desc">Backup diario a Google Drive cifrado AES-256. Historial de 30 versiones. Restauración completa en un click.</div><div class="mod-pills"><span class="pill">Drive</span><span class="pill">AES-256</span><span class="pill">30 vers.</span></div></div>
+      <div class="mod-card fade"><div class="mod-icon">🔄</div><div class="mod-name">Auto-Update</div><div class="mod-desc">Las actualizaciones llegan solas. Changelog con las novedades. Se instala con un click sin asistencia técnica.</div><div class="mod-pills"><span class="pill">Automático</span><span class="pill">Changelog</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="fiscal">
+  <div class="container">
+    <p class="eyebrow fade">// fiscal & inteligencia artificial</p>
+    <h2 class="sec-title fade">El único sistema que cuida tu situación fiscal</h2>
+    <div class="pink-bar fade"></div>
+    <div class="two-col" style="margin-bottom:80px">
+      <div class="fade">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;margin-bottom:16px">Para Monotributistas y Responsables Inscriptos</h3>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;margin-bottom:24px">DELPA solo cuenta las ventas con CAE real de AFIP para el cálculo fiscal — exactamente igual a como lo hace la AFIP. No las ventas internas ni los tickets sin factura.</p>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:12px;color:var(--pink)">Monotributistas (A-K):</p>
+        <ul class="uc-list" style="margin-bottom:20px">
+          <li>Barra de progreso mensual y anual de facturación</li>
+          <li>Alerta amarilla al 80% del límite — tiempo de actuar</li>
+          <li>Alerta roja al 95% — urgente</li>
+          <li>Proyección: en qué mes superarías el límite si seguís así</li>
+          <li>Categorías A-K con límites 2025/2026 actualizados</li>
+        </ul>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:12px;color:var(--green)">Responsables Inscriptos:</p>
+        <ul class="uc-list">
+          <li>IVA Débito Fiscal de ventas calculado automáticamente</li>
+          <li>IVA Crédito Fiscal de compras registrado</li>
+          <li>Posición mensual: a favor o a pagar</li>
+          <li>Fecha estimada de vencimiento de la DDJJ</li>
+          <li>Libro IVA Ventas y Compras exportable en formato SIAP</li>
+        </ul>
+      </div>
+      <div class="feature-visual fade">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:20px;color:var(--text2)">Control Fiscal — Junio 2026</div>
+        <div style="font-size:12px;color:var(--pink);font-family:'JetBrains Mono',monospace;margin-bottom:16px">// MONOTRIBUTISTA CATEGORÍA H</div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Facturado este mes</span><span>$1.240.000 / $1.820.000</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:68%"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Facturado este año</span><span>$8.900.000 / $21.885.000</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:41%"></div></div>
+        </div>
+        <div class="alert-box">⚠️ Vas a llegar al 80% del límite mensual en aproximadamente 4 días. Consultá con tu contador.</div>
+        <div style="font-size:12px;color:var(--green);font-family:'JetBrains Mono',monospace;margin:20px 0 16px">// RESPONSABLE INSCRIPTO — POSICIÓN IVA</div>
+        <div class="progress-item">
+          <div class="progress-label"><span>IVA Débito Fiscal (ventas)</span><span>$55.800</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-pink" style="width:75%"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>IVA Crédito Fiscal (compras)</span><span>$43.400</span></div>
+          <div class="progress-bar"><div class="progress-fill fill-green" style="width:58%"></div></div>
+        </div>
+        <div class="iva-box">✓ Posición IVA del mes: <strong style="margin-left:4px">$12.400 a pagar</strong> — vence el 18 de julio</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="ai-cards fade">
+        <div class="ai-card urgent">
+          <div class="ai-card-icon">🔴</div>
+          <div><div class="ai-card-title">Quiebre de stock inminente</div><div class="ai-card-text">Jean Clásico T.38 — Stock: 2 unidades. Velocidad: 3 por semana. <strong style="color:var(--red)">Te quedás sin stock en 5 días.</strong> Pedí mínimo 10 hoy.</div></div>
+        </div>
+        <div class="ai-card warn">
+          <div class="ai-card-icon">🟡</div>
+          <div><div class="ai-card-title">Stock especular detectado</div><div class="ai-card-text">Remera T.XS — 18 unidades, 0 ventas en 60 días. <strong style="color:var(--yellow)">Capital inmovilizado: $54.000.</strong> Considerá liquidar con 30% off.</div></div>
+        </div>
+        <div class="ai-card ok">
+          <div class="ai-card-icon">🟢</div>
+          <div><div class="ai-card-title">Recomendación de compra</div><div class="ai-card-text">Los viernes siempre vendés jeans T.40 y T.42. Esta semana tenés 1 de cada uno. <strong style="color:var(--green)">Pedí mínimo 5 de cada talle.</strong></div></div>
+        </div>
+        <div class="ai-card" style="border-color:var(--pink)">
+          <div class="ai-card-icon">💰</div>
+          <div><div class="ai-card-title">Rentabilidad real del mes</div><div class="ai-card-text">Vendiste $320.000. Costo: $128.000. Gastos fijos: $85.000. <strong style="color:var(--pink)">Ganancia neta: $107.000 (33% de margen).</strong></div></div>
+        </div>
+      </div>
+      <div class="fade">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;margin-bottom:16px">Inteligencia artificial integrada</h3>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;margin-bottom:24px">DELPA analiza tu historial y te da recomendaciones concretas. Nunca más te quedás sin stock de lo que se vende ni con plata inmovilizada en lo que no se mueve.</p>
+        <ul class="uc-list">
+          <li>Predicción de quiebre de stock por talle y color</li>
+          <li>Detección de stock especular (mucho stock, poca rotación)</li>
+          <li>Recomendaciones de compra por patrones de venta</li>
+          <li>Comparativa de márgenes por proveedor</li>
+          <li>Punto de equilibrio calculado automáticamente</li>
+          <li>Flujo de caja proyectado a 30 días</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="container">
+    <p class="eyebrow fade">// comparativa</p>
+    <h2 class="sec-title fade">DELPA vs las alternativas</h2>
+    <div class="pink-bar fade"></div>
+    <div class="compare-wrap fade">
+      <table class="comp">
+        <thead>
+          <tr>
+            <th style="text-align:left;color:var(--text2);font-size:13px;font-weight:500">Función</th>
+            <th class="col-delpa">DELPA PRO</th>
+            <th style="color:var(--text2)">Excel</th>
+            <th style="color:var(--text2)">Sistema genérico</th>
+            <th style="color:var(--text2)">ERP grande</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Stock por talle y color con barcode</td><td class="col-delpa ck">✓</td><td><span class="cp">Manual</span></td><td><span class="cp">Básico</span></td><td class="ck">✓</td></tr>
+          <tr><td>Facturación AFIP con CAE automático</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td><span class="cp">Extra $</span></td><td class="ck">✓</td></tr>
+          <tr><td>Mercado Pago QR presencial</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td><span class="cp">Extra $</span></td></tr>
+          <tr><td>Sincronización Tienda Nube</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td><span class="cp">Raro</span></td></tr>
+          <tr><td>Control de monotributo con alerta</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>Posición ante el IVA (RI)</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td><span class="cp">Extra $</span></td></tr>
+          <tr><td>Gestión de consignación automática</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>IA predicción de quiebre de stock</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>Stock especular (capital inmovilizado)</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>Punto de equilibrio automático</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>Rentabilidad real con costos y gastos</td><td class="col-delpa ck">✓</td><td><span class="cp">Manual</span></td><td class="cx">✗</td><td class="ck">✓</td></tr>
+          <tr><td>Inventario físico masivo por barcode</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td><span class="cp">Básico</span></td><td class="ck">✓</td></tr>
+          <tr><td>Funciona sin internet</td><td class="col-delpa ck">✓</td><td class="ck">✓</td><td class="cx">✗</td><td class="cx">✗</td></tr>
+          <tr><td>Actualización automática con changelog</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td><span class="cp">Manual</span></td><td class="ck">✓</td></tr>
+          <tr><td>Backup automático Google Drive</td><td class="col-delpa ck">✓</td><td class="cx">✗</td><td><span class="cp">Extra $</span></td><td><span class="cp">Propio</span></td></tr>
+          <tr><td>Precio para un local</td><td class="col-delpa" style="color:var(--pink);font-weight:700">Accesible</td><td style="color:var(--green)">$0</td><td style="color:var(--text2)">$$</td><td style="color:var(--red)">$$$$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="eyebrow fade">// testimonios</p>
+    <h2 class="sec-title fade">Lo que dicen nuestros clientes</h2>
+    <div class="pink-bar fade"></div>
+    <div class="test-grid">
+      <div class="test-card fade">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Antes perdía horas haciendo el inventario a mano y siempre me equivocaba en los talles. Ahora escaneo todo con el lector y DELPA me dice exactamente qué tengo y qué falta. Un antes y un después total."</p>
+        <div class="test-author"><div class="test-av">M</div><div><div class="test-name">María G.</div><div class="test-store">Tienda femenina · Mar del Plata</div></div></div>
+      </div>
+      <div class="test-card fade">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"La sincronización con Tienda Nube me cambió la vida. El stock se actualiza solo cuando vendo online y cuando vendo en el local. Ya no tengo que hacer nada a mano y nunca más vendí algo que no tenía."</p>
+        <div class="test-author"><div class="test-av">L</div><div><div class="test-name">Laura P.</div><div class="test-store">Moda online · Buenos Aires</div></div></div>
+      </div>
+      <div class="test-card fade">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"El control del monotributo me evitó pasarme de categoría. DELPA me avisó cuando llegué al 80% y pude parar de facturar a tiempo. Eso solo ya valió todo lo que pagué por el sistema."</p>
+        <div class="test-author"><div class="test-av">C</div><div><div class="test-name">Carolina R.</div><div class="test-store">Boutique · Córdoba</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="precios" style="background:var(--bg2)">
+  <div class="container">
+    <p class="eyebrow fade">// precios</p>
+    <h2 class="sec-title fade">Planes para cada negocio</h2>
+    <div class="pink-bar fade"></div>
+    <p class="sec-sub fade" style="margin-bottom:16px">Sin costos por venta. Sin límite de productos. Sin sorpresas. Todo incluido.</p>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:56px" class="fade">💬 Consultá el precio por WhatsApp al <strong style="color:var(--pink)">+54 11 3857-4444</strong> — adaptamos el plan a tu negocio.</p>
+    <div class="plans-grid">
+      <div class="plan fade">
+        <div class="plan-name">Mensual</div>
+        <div class="plan-price">Consultar <small>/ mes</small></div>
+        <div class="plan-desc">Para arrancar sin compromiso y conocer el sistema.</div>
+        <ul class="plan-list">
+          <li>Todos los módulos incluidos</li>
+          <li>Soporte por WhatsApp</li>
+          <li>Actualizaciones automáticas</li>
+          <li>Backup en Google Drive</li>
+          <li>1 PC</li>
+        </ul>
+        <a href="https://wa.me/5491138574444?text=Hola,%20me%20interesa%20el%20plan%20mensual%20de%20DELPA" target="_blank" class="plan-btn s">Consultar precio →</a>
+      </div>
+      <div class="plan hot fade">
+        <div class="plan-badge">⭐ MÁS POPULAR</div>
+        <div class="plan-name">Semestral</div>
+        <div class="plan-price">Consultar <small>/ 6 meses</small></div>
+        <div class="plan-desc">La opción preferida. Todo resuelto por 6 meses.</div>
+        <ul class="plan-list">
+          <li>Todos los módulos incluidos</li>
+          <li>Soporte prioritario</li>
+          <li>Actualizaciones automáticas</li>
+          <li>Backup en Google Drive</li>
+          <li>Configuración inicial incluida</li>
+          <li>Capacitación incluida</li>
+          <li>1 PC</li>
+        </ul>
+        <a href="https://wa.me/5491138574444?text=Hola,%20me%20interesa%20el%20plan%20semestral%20de%20DELPA" target="_blank" class="plan-btn p">Consultar precio →</a>
+      </div>
+      <div class="plan fade">
+        <div class="plan-name">Anual</div>
+        <div class="plan-price">Consultar <small>/ año</small></div>
+        <div class="plan-desc">El mejor precio para el largo plazo.</div>
+        <ul class="plan-list">
+          <li>Todos los módulos incluidos</li>
+          <li>Soporte prioritario 24/7</li>
+          <li>Actualizaciones automáticas</li>
+          <li>Backup en Google Drive</li>
+          <li>Configuración inicial incluida</li>
+          <li>Capacitación del equipo</li>
+          <li>1 PC (adicional por sucursal)</li>
+        </ul>
+        <a href="https://wa.me/5491138574444?text=Hola,%20me%20interesa%20el%20plan%20anual%20de%20DELPA" target="_blank" class="plan-btn s">Consultar precio →</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg3);border:1px solid var(--border);border-radius:20px" class="fade">
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:12px">¿Tenés más de un local?</p>
+      <p style="color:var(--text2);margin-bottom:24px">Tenemos un plan especial para negocios con múltiples sucursales. Consultanos.</p>
+      <a href="https://wa.me/5491138574444?text=Hola,%20tengo%20m%C3%BAltiples%20sucursales%20y%20me%20interesa%20DELPA" target="_blank" class="btn-p">💬 Consultar plan multi-sucursal</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <p class="eyebrow fade">// preguntas frecuentes</p>
+    <h2 class="sec-title fade">Todo lo que necesitás saber</h2>
+    <div class="pink-bar fade"></div>
+    <div class="faq-wrap">
+      <div class="faq-item fade"><button class="faq-q">¿Necesito internet para usar DELPA? <span class="faq-arr">+</span></button><div class="faq-a">No. DELPA funciona 100% offline. La base de datos se guarda en tu PC. Internet solo se necesita para sincronizar con Tienda Nube, hacer backup en Google Drive, procesar pagos con Mercado Pago QR o recibir actualizaciones automáticas.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Funciona para Responsables Inscriptos? <span class="faq-arr">+</span></button><div class="faq-a">Sí. Para RI, DELPA calcula automáticamente el IVA Débito Fiscal de tus ventas y el IVA Crédito Fiscal de tus compras, y te muestra la posición mensual (a favor o a pagar). También te avisa la fecha estimada de vencimiento de la DDJJ y genera el Libro IVA Ventas y Compras en formato SIAP para exportar a tu contador.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Cómo me avisa cuando me acerco al límite del monotributo? <span class="faq-arr">+</span></button><div class="faq-a">DELPA muestra en el Dashboard una barra de progreso con tu facturación mensual y anual vs el límite de tu categoría. Al llegar al 80% aparece una alerta amarilla, al 95% una alerta roja. Además proyecta en qué fecha superarías el límite si seguís al mismo ritmo. Solo cuenta facturas con CAE real de AFIP, exactamente igual que lo haría la AFIP.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Qué pasa si mi PC se rompe o la cambio? <span class="faq-arr">+</span></button><div class="faq-a">Nada grave. DELPA hace backup automático diario en Google Drive. Si cambiás de PC, instalás DELPA, restaurás el backup y en menos de 10 minutos tenés todo como estaba. También te generamos un nuevo código de licencia para la PC nueva sin costo adicional.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Funciona con el lector de código de barras que ya tengo? <span class="faq-arr">+</span></button><div class="faq-a">Sí. DELPA funciona con cualquier lector USB de código de barras (los que se usan como teclado). No necesitás comprar nada especial. También podés imprimir etiquetas en hoja A4 normal (65 por hoja) o en la Brother QL-700.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Puedo facturar electrónicamente con AFIP? <span class="faq-arr">+</span></button><div class="faq-a">Sí. DELPA tiene integración nativa con AFIP/ARCA via WSFE. Compatible con Monotributistas de todas las categorías (A-K con límites 2025/2026 actualizados) y Responsables Inscriptos. El CAE se genera automáticamente al facturar. Solo necesitás el certificado digital de AFIP.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Qué es la gestión de consignación? <span class="faq-arr">+</span></button><div class="faq-a">La consignación es cuando vendés mercadería de un proveedor que solo cobrás cuando la vendés. DELPA registra automáticamente cada unidad vendida y acumula la deuda al proveedor. Cuando querés liquidar, generás un PDF detallado con todas las ventas y el total a pagar.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Cómo funciona la sincronización con Tienda Nube? <span class="faq-arr">+</span></button><div class="faq-a">La sincronización es bidireccional. Cuando vendés en el local, el stock se actualiza en Tienda Nube. Cuando llega un pedido online, aparece en DELPA para procesarlo. Los clientes también se sincronizan. Solo tenés que conectar tu cuenta de Tienda Nube desde la configuración — es un proceso de 2 minutos.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Se actualiza solo o tengo que instalar las versiones nuevas? <span class="faq-arr">+</span></button><div class="faq-a">Se actualiza solo. Cuando publicamos una versión nueva, DELPA te avisa con un cartel que dice qué hay de nuevo (changelog). Hacés click en "Actualizar" y el sistema descarga e instala solo. No necesitás hacer nada técnico ni llamar a nadie.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Tienen soporte si tengo un problema? <span class="faq-arr">+</span></button><div class="faq-a">Sí. El soporte es por WhatsApp al +54 11 3857-4444 o por email a delpa555@gmail.com. También podemos conectarnos remotamente a tu PC via AnyDesk para resolver cualquier problema sin que tengas que hacer nada técnico vos.</div></div>
+      <div class="faq-item fade"><button class="faq-q">¿Funciona en Windows 7 o 8? <span class="faq-arr">+</span></button><div class="faq-a">No. DELPA requiere Windows 10 o Windows 11. No funciona en versiones anteriores. Si necesitás asesoramiento sobre el hardware mínimo necesario, consultanos por WhatsApp.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="container">
+    <p class="eyebrow fade">// blog & recursos</p>
+    <h2 class="sec-title fade">Recursos para tu negocio</h2>
+    <div class="pink-bar fade"></div>
+    <div class="blog-grid">
+      <a href="#" class="blog-card fade"><div class="blog-img bi1">👗</div><div class="blog-body"><div class="blog-cat">Gestión de stock</div><div class="blog-title">Cómo organizar el stock de una tienda de ropa por temporada</div><div class="blog-exc">Estrategias para manejar el inventario sin quedarte sin stock en los talles más vendidos.</div></div></a>
+      <a href="#" class="blog-card fade"><div class="blog-img bi2">💰</div><div class="blog-body"><div class="blog-cat">Fiscal</div><div class="blog-title">Todo lo que un monotributista de ropa necesita saber sobre AFIP en 2026</div><div class="blog-exc">Categorías actualizadas, límites y cómo evitar pasarte de categoría sin darte cuenta.</div></div></a>
+      <a href="#" class="blog-card fade"><div class="blog-img bi3">📱</div><div class="blog-body"><div class="blog-cat">Tienda Nube</div><div class="blog-title">Cómo integrar tu local físico con Tienda Nube sin perder el control del stock</div><div class="blog-exc">El paso a paso para sincronizar ventas online y offline sin errores de inventario.</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <p class="eyebrow fade">// contacto</p>
+    <h2 class="sec-title fade">Hablemos de tu negocio</h2>
+    <div class="pink-bar fade"></div>
+    <div class="contact-grid">
+      <div class="contact-left fade">
+        <h3>La demo es gratis y sin compromiso</h3>
+        <p>Somos comerciantes que vivimos el comercio todos los días. Sabemos lo que buscás porque nosotros también lo buscamos. Contanos cómo funciona tu tienda y te mostramos en vivo todo lo que DELPA puede hacer por vos.</p>
+        <div class="clinks">
+          <a href="https://wa.me/5491138574444?text=Hola,%20quiero%20una%20demo%20de%20DELPA%20Gesti%C3%B3n%20PRO" target="_blank" class="clink">
+            <span class="clink-icon">💬</span>
+            <div class="clink-text"><strong>+54 11 3857-4444</strong><span>WhatsApp — Respuesta inmediata</span></div>
+          </a>
+          <a href="mailto:delpa555@gmail.com" class="clink">
+            <span class="clink-icon">📧</span>
+            <div class="clink-text"><strong>delpa555@gmail.com</strong><span>Para consultas detalladas</span></div>
+          </a>
+          <a href="https://delpagestion.com.ar" class="clink">
+            <span class="clink-icon">🌐</span>
+            <div class="clink-text"><strong>delpagestion.com.ar</strong><span>Nuestro sitio web</span></div>
+          </a>
+          <a href="#" class="clink">
+            <span class="clink-icon">📍</span>
+            <div class="clink-text"><strong>Mar del Plata, Argentina</strong><span>Atendemos a todo el país</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade">
+        <div class="fg"><label>Tu nombre</label><input type="text" placeholder="María García"></div>
+        <div class="fg"><label>WhatsApp</label><input type="text" placeholder="+54 9 223 456-7890"></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="maria@mitienda.com"></div>
+        <div class="fg">
+          <label>Tipo de negocio</label>
+          <select>
+            <option>Tienda de ropa femenina</option>
+            <option>Tienda de ropa masculina</option>
+            <option>Ropa infantil</option>
+            <option>Multimarca</option>
+            <option>Jeanería</option>
+            <option>Lencería</option>
+            <option>Calzado y accesorios</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="fg"><label>¿Qué te interesa más?</label><textarea placeholder="Contanos: ¿usás Tienda Nube? ¿facturás con AFIP? ¿sos monotributista o RI? ¿cuántos productos tenés? ¿cuántas sucursales? Cualquier dato nos ayuda a mostrarte lo más relevante para tu negocio."></textarea></div>
+        <a href="https://wa.me/5491138574444?text=Hola,%20quiero%20una%20demo%20de%20DELPA%20Gesti%C3%B3n%20PRO" target="_blank" class="btn-p" style="text-align:center;display:block;width:100%;padding:15px;font-size:15px">💬 Consultar por WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700">DELPA<span style="color:var(--pink)">.</span></div>
+      <div class="ft-domain">delpagestion.com.ar</div>
+      <p>Sistema de gestión para tiendas de ropa. Hecho por comerciantes, para comerciantes. Argentina.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Producto</h4>
+      <ul>
+        <li><a href="#unico">Diferenciadores</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#fiscal">Fiscal & IA</a></li>
+        <li><a href="#precios">Precios</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/5491138574444" target="_blank">+54 11 3857-4444</a></li>
+        <li><a href="mailto:delpa555@gmail.com">delpa555@gmail.com</a></li>
+        <li><a href="https://delpagestion.com.ar">delpagestion.com.ar</a></li>
+        <li><a href="#">Mar del Plata, AR</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 DELPA Gestión PRO · delpagestion.com.ar · Mar del Plata, Argentina</p>
+    <p>Desarrollado por <a href="#">Iván Emmanuel Del Palacio</a></p>
+  </div>
+</footer>
+
+<script>
+const phrases=['venta: Jean T.38 → $45.000 ✓','stock actualizado en TN ✓','CAE 71234567890 generado ✓','puntos: +45 para María G ✓','mono: 78% del límite mensual ⚠','IVA posición: $12.400 a pagar','predicción: pedí T.40 hoy 🧠','backup Drive completado ✓'];
+let pi=0,ci=0,del=false;
+const el=document.getElementById('typed');
+function tick(){const ph=phrases[pi];if(!del){el.textContent=ph.slice(0,++ci);if(ci===ph.length){del=true;setTimeout(tick,2200);return}}else{el.textContent=ph.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}setTimeout(tick,del?35:75)}
+tick();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.08});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open')})});
+const pobs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.progress-fill').forEach(bar=>{const w=bar.style.width;bar.style.width='0';setTimeout(()=>bar.style.width=w,100)})}})},{threshold:0.3});
+document.querySelectorAll('.feature-visual').forEach(el=>pobs.observe(el));
+</script>
+</body>
+</html>
