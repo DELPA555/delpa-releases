@@ -128,18 +128,60 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
 /* BADGE */
 .badge-new{background:var(--pink);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:100px;font-family:'JetBrains Mono',monospace;vertical-align:middle;margin-left:6px}
 
+/* HELP BANNER (fijo arriba de todo) */
+.help-banner{position:fixed;top:0;left:0;right:0;z-index:101;background:linear-gradient(90deg,var(--pink-dim),var(--pink));color:#fff;text-align:center;padding:8px 20px;font-size:13px;font-weight:600}
+.help-banner a{color:#fff;font-weight:800;text-decoration:underline}
+nav{top:36px}
+.hero{padding-top:158px}
+.sidebar{top:116px;height:calc(100vh - 136px)}
+
+/* WHATSAPP CTA (al final de cada tutorial) */
+.wa-cta{margin:52px 0 8px;padding:24px;background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.25);border-radius:16px;text-align:center}
+.wa-cta-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:14px}
+.wa-cta a{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}
+
+/* TOC (índice del tutorial) */
+.toc{margin:0 0 36px;padding:18px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:14px}
+.toc-title{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--pink);margin-bottom:12px}
+.toc ol{list-style:none;counter-reset:toc;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.toc li{counter-increment:toc;font-size:14px;color:var(--text2);padding:4px 0;cursor:pointer;display:flex;gap:8px;align-items:center}
+.toc li::before{content:counter(toc);background:var(--bg4);color:var(--pink);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.toc li:hover{color:var(--text)}
+
+/* FAQ */
+.faq{margin:28px 0 8px}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--bg3)}
+.faq-q{padding:15px 20px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--text)}
+.faq-q::after{content:'+';color:var(--pink);font-size:22px;font-weight:400;flex-shrink:0;line-height:1}
+.faq-item.open .faq-q::after{content:'\2212'}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height 0.25s ease,padding 0.25s ease;color:var(--text2);font-size:14px;line-height:1.7}
+.faq-item.open .faq-a{padding:0 20px 18px;max-height:600px}
+
+/* STATE PILLS (estados de pedidos/remitos) */
+.states-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:20px 0}
+.state-pill{background:var(--bg4);border:1px solid var(--border);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:600;color:var(--text2)}
+.state-pill.g{border-color:rgba(52,211,153,0.4);color:var(--green)}
+.state-pill.y{border-color:rgba(245,158,11,0.4);color:var(--yellow)}
+.state-pill.b{border-color:rgba(96,165,250,0.4);color:var(--blue)}
+.state-pill.p{border-color:var(--pink);color:var(--pink)}
+.state-arrow{color:var(--text3);font-size:14px}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .layout{grid-template-columns:1fr;padding:20px}
   .sidebar{position:static;height:auto;padding-right:0;border-right:none;border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:32px}
   .content{padding-left:0}
   nav{padding:14px 20px}
-  .hero{padding:100px 20px 40px}
+  .hero{padding:140px 20px 40px}
   .mock-form{grid-template-columns:1fr}
+  .toc ol{grid-template-columns:1fr}
+  .help-banner{font-size:11.5px;padding:7px 14px}
 }
 </style>
 </head>
 <body>
+
+<div class="help-banner">¿Necesitás ayuda? Escribinos por WhatsApp → <a href="https://wa.me/5491138574444" target="_blank">+54 11 3857-4444</a></div>
 
 <nav>
   <a href="https://delpagestion.com.ar" class="logo">DELPA<span>.</span></a>
@@ -150,7 +192,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">📚 Centro de tutoriales · DELPA Gestión PRO v1.6</div>
+  <div class="hero-badge">📚 Centro de tutoriales · DELPA Gestión PRO v1.7</div>
   <h1>Aprendé a usar<br><em>DELPA</em> paso a paso</h1>
   <p>Guías completas para sacarle el máximo provecho a cada módulo del sistema.</p>
   <div class="search-box">
@@ -176,6 +218,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
       <button class="sidebar-link" onclick="show('mpqr')"><span class="sl-icon">💳</span> Mercado Pago QR</button>
       <button class="sidebar-link" onclick="show('caja')"><span class="sl-icon">💼</span> Apertura y cierre de caja</button>
       <button class="sidebar-link" onclick="show('cambios')"><span class="sl-icon">🔄</span> Cambios y devoluciones</button>
+      <button class="sidebar-link" onclick="show('senas')"><span class="sl-icon">🎟️</span> Señas y reservas <span class="sl-badge new">NEW</span></button>
+      <button class="sidebar-link" onclick="show('vales')"><span class="sl-icon">🎫</span> Vales de descuento <span class="sl-badge new">NEW</span></button>
+      <button class="sidebar-link" onclick="show('gastos')"><span class="sl-icon">🧾</span> Gastos del día <span class="sl-badge new">NEW</span></button>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-title">// Stock e inventario</div>
@@ -184,11 +229,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
       <button class="sidebar-link" onclick="show('etiquetas')"><span class="sl-icon">🏷️</span> Imprimir etiquetas</button>
       <button class="sidebar-link" onclick="show('inventario')"><span class="sl-icon">🔍</span> Inventario físico</button>
       <button class="sidebar-link" onclick="show('egreso')"><span class="sl-icon">📤</span> Egreso / Devolución</button>
+      <button class="sidebar-link" onclick="show('pedidos')"><span class="sl-icon">📝</span> Pedidos a proveedores <span class="sl-badge new">NEW</span></button>
+      <button class="sidebar-link" onclick="show('remitos')"><span class="sl-icon">🚚</span> Remitos <span class="sl-badge new">NEW</span></button>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-title">// Facturación y fiscal</div>
       <button class="sidebar-link" onclick="show('afip')"><span class="sl-icon">🧾</span> Facturar con AFIP</button>
       <button class="sidebar-link" onclick="show('fiscal')"><span class="sl-icon">📊</span> Control fiscal</button>
+      <button class="sidebar-link" onclick="show('gastosfijos')"><span class="sl-icon">🏢</span> Gastos fijos <span class="sl-badge new">NEW</span></button>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-title">// Integraciones</div>
@@ -202,9 +250,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
       <button class="sidebar-link" onclick="show('consignacion')"><span class="sl-icon">🤝</span> Consignación</button>
     </div>
     <div class="sidebar-section">
+      <div class="sidebar-section-title">// Proveedores</div>
+      <button class="sidebar-link" onclick="show('proveedores')"><span class="sl-icon">🏭</span> Proveedores <span class="sl-badge new">NEW</span></button>
+    </div>
+    <div class="sidebar-section">
       <div class="sidebar-section-title">// Reportes</div>
       <button class="sidebar-link" onclick="show('reportes')"><span class="sl-icon">📋</span> Reportes y análisis</button>
       <button class="sidebar-link" onclick="show('dashboard')"><span class="sl-icon">📊</span> Dashboard e IA</button>
+      <button class="sidebar-link" onclick="show('score')"><span class="sl-icon">⭐</span> Score de salud <span class="sl-badge new">NEW</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">// Automatizaciones</div>
+      <button class="sidebar-link" onclick="show('informes')"><span class="sl-icon">📧</span> Informes por email <span class="sl-badge new">NEW</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">// Sistema</div>
+      <button class="sidebar-link" onclick="show('sistema')"><span class="sl-icon">⬆️</span> Actualizar el sistema <span class="sl-badge new">NEW</span></button>
     </div>
   </div>
 
@@ -431,6 +492,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
         <div class="tip-icon">💡</div>
         <div class="tip-text"><strong>Modo rápido:</strong> Si escaneás el mismo código dos veces seguidas, DELPA suma 1 unidad en lugar de agregar una línea nueva. Ideal para ventas con varios artículos iguales.</div>
       </div>
+
+      <hr class="sec-divider">
+      <div class="sec-h3">Cobro con múltiples medios de pago</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Cuando la clienta quiere pagar una parte en efectivo y otra con transferencia o tarjeta, podés dividir el pago entre varios medios.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Hacer click en "Dividir →"</div><div class="step-desc">Al lado del título <strong>Medio de pago</strong> hay un botón <strong>Dividir →</strong>. Hacé click para activar el modo de pago dividido.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Asignar el monto de cada medio</div><div class="step-desc">Aparece una fila por medio de pago. Elegí el medio y escribí cuánto se paga con cada uno. Por ejemplo: $20.000 en Efectivo y $25.000 por Transferencia.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Agregar más medios si hace falta</div><div class="step-desc">Con <strong>+ Agregar método</strong> sumás más filas. DELPA muestra en rojo cuánto <strong>falta</strong> o cuánto <strong>excede</strong> hasta que la suma coincide exactamente con el total.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Confirmar</div><div class="step-desc">Cuando la suma de los medios iguala el total, confirmás la venta normalmente. El ticket detalla cada medio con su importe.</div></div></div>
+      </div>
+      <div class="screen-mock">
+        <div class="screen-bar"><div class="screen-dot" style="background:#FF5F57"></div><div class="screen-dot" style="background:#FFBD2E"></div><div class="screen-dot" style="background:#28CA41"></div><div class="screen-title">DELPA — Pago dividido</div></div>
+        <div class="screen-body">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:10px;font-size:13px">
+            <div class="mf-input">💵 Efectivo</div><div class="mf-input" style="text-align:right">$20.000</div>
+            <div class="mf-input">🏦 Transferencia</div><div class="mf-input" style="text-align:right">$25.000</div>
+            <div style="grid-column:1/3;border-top:1px solid var(--border);margin:4px 0"></div>
+            <div style="color:var(--text2)">Total de la venta</div><div style="text-align:right;color:var(--green);font-weight:700">$45.000 ✓</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- VUELTO -->
@@ -606,6 +688,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
         <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Caja → Cerrar caja</div><div class="step-desc">Al final del día o turno, hacé click en <strong>Cerrar caja</strong>.</div></div></div>
         <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Contar el efectivo real</div><div class="step-desc">Ingresá el efectivo que contás físicamente en la caja. DELPA compara con lo que debería haber según las ventas y calcula la diferencia.</div></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Recibir el informe por email</div><div class="step-desc">Si tenés el email configurado, DELPA envía automáticamente el informe del día con todas las ventas, gastos y diferencia de caja.</div></div></div>
+      </div>
+      <hr class="sec-divider">
+      <div class="sec-h3">Cargar un movimiento manual (ingreso o egreso extra)</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Además de las ventas, podés registrar dinero que entra o sale de la caja por otros motivos: un retiro de efectivo, el pago a un cadete, una cobranza, etc.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Caja → Movimiento manual</div><div class="step-desc">Con la caja abierta, hacé click en <strong>+ Movimiento</strong> dentro del módulo Caja.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Elegir tipo: Ingreso o Egreso</div><div class="step-desc">Un <strong>Ingreso</strong> suma efectivo a la caja (ej: una cobranza de cuenta corriente). Un <strong>Egreso</strong> lo resta (ej: pago a un proveedor o retiro del dueño).</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Ingresar monto y motivo</div><div class="step-desc">Escribí el importe y una descripción breve. El movimiento queda registrado con la hora y se refleja en el saldo de la caja en tiempo real.</div></div></div>
+      </div>
+      <div class="info-box">
+        <div class="tip-icon">ℹ️</div>
+        <div class="tip-text"><strong>En el cierre:</strong> Todos los movimientos manuales aparecen detallados en el informe de cierre de caja, separados de las ventas, para que el arqueo cuadre perfecto.</div>
       </div>
     </div>
 
@@ -821,6 +915,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
       </div>
       <div class="sec-h3">Lista de espera</div>
       <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Si una clienta pide un talle que no tenés en stock, lo registrás en la lista de espera. Cuando llega ese producto, DELPA te avisa para que se lo notifiques por WhatsApp.</p>
+      <hr class="sec-divider">
+      <div class="sec-h3">Enviar WhatsApp directo desde la ficha</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Abrir la ficha de la clienta</div><div class="step-desc">En el módulo <strong>Clientes</strong>, hacé click en la clienta para abrir su ficha.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Tocar el botón de WhatsApp</div><div class="step-desc">Al lado del teléfono hay un botón <strong>💬 WhatsApp</strong>. Al tocarlo se abre WhatsApp Web (o la app) con el chat de esa clienta listo para escribir — sin tener que cargar el número a mano.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Usar mensajes predefinidos</div><div class="step-desc">Sirve para avisar que llegó un producto de la lista de espera, recordar una seña por vencer o reclamar una cuenta corriente pendiente.</div></div></div>
+      </div>
     </div>
 
     <!-- FIDELIZACION -->
@@ -836,7 +937,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
         <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Canjear puntos en una venta</div><div class="step-desc">En el módulo de Ventas, seleccioná la clienta y hacé click en <strong>Canjear puntos</strong>. Se aplica el descuento correspondiente automáticamente.</div></div></div>
       </div>
       <div class="sec-h3">Vales de descuento</div>
-      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Generá vales de descuento imprimibles para regalar o compensar a clientas. Cada vale tiene un código único y fecha de vencimiento. Al usar el código en una venta, DELPA lo valida y aplica el descuento.</p>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Generá vales de descuento imprimibles para regalar o compensar a clientas. Cada vale tiene un código único y fecha de vencimiento. Al usar el código en una venta, DELPA lo valida y aplica el descuento. Ver el tutorial completo de <strong>Vales de descuento</strong> en la sección Ventas.</p>
+      <hr class="sec-divider">
+      <div class="sec-h3">Ranking de clientas con más puntos</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Clientes → Ranking de puntos</div><div class="step-desc">En el módulo <strong>Clientes</strong> hay una pestaña/sección de <strong>Ranking</strong> que ordena a las clientas por puntos acumulados.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Ver tus mejores clientas</div><div class="step-desc">El ranking muestra el podio de quienes más compran y acumulan. Ideal para premiar a las más fieles con un vale o una atención especial.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Contactarlas con una promo</div><div class="step-desc">Desde el ranking podés abrir su ficha y mandarles un WhatsApp con una promoción exclusiva para que canjeen sus puntos y vuelvan al local.</div></div></div>
+      </div>
     </div>
 
     <!-- CONSIGNACION -->
@@ -901,6 +1009,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
         <div class="tip-icon">💡</div>
         <div class="tip-text"><strong>Exportar a PDF:</strong> Todos los reportes tienen botón <strong>Exportar PDF</strong> para compartir o imprimir.</div>
       </div>
+      <hr class="sec-divider">
+      <div class="sec-h3">Reporte de vendedoras</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Compará el rendimiento de cada vendedora en el período que elijas. Para que funcione, asigná siempre la vendedora en cada venta.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Reportes → Vendedoras</div><div class="step-desc">Elegí el rango de fechas (día, semana, mes o personalizado).</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Ver la comparativa</div><div class="step-desc">DELPA muestra por cada vendedora: <strong>cantidad de ventas</strong>, <strong>total facturado</strong>, <strong>ticket promedio</strong> y unidades vendidas.</div></div></div>
+      </div>
+      <div class="screen-mock">
+        <div class="screen-bar"><div class="screen-dot" style="background:#FF5F57"></div><div class="screen-dot" style="background:#FFBD2E"></div><div class="screen-dot" style="background:#28CA41"></div><div class="screen-title">DELPA — Reporte de vendedoras</div></div>
+        <div class="screen-body">
+          <table class="mock-table">
+            <tr><th>Vendedora</th><th>Ventas</th><th>Facturado</th><th>Ticket prom.</th></tr>
+            <tr><td>Sofía</td><td>48</td><td>$1.920.000</td><td>$40.000</td></tr>
+            <tr><td>Caro</td><td>39</td><td>$1.404.000</td><td>$36.000</td></tr>
+            <tr><td>Mai</td><td>27</td><td>$918.000</td><td>$34.000</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>Para premios e incentivos:</strong> Usá el ticket promedio (no solo el total) para evaluar quién vende mejor, más allá de cuántas horas trabajó cada una.</div>
+      </div>
     </div>
 
     <!-- DASHBOARD -->
@@ -921,6 +1051,370 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:fl
       <div class="tip-box">
         <div class="tip-icon">💡</div>
         <div class="tip-text"><strong>Para que el Dashboard sea preciso:</strong> Configurá los <strong>Gastos fijos</strong> en Configuración → Gastos Fijos (alquiler, sueldos, servicios, etc.) y cargá siempre el <strong>precio de costo</strong> de cada producto.</div>
+      </div>
+      <hr class="sec-divider">
+      <div class="sec-h3">Cómo interpretar el flujo de caja proyectado</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">El Dashboard proyecta cómo va a evolucionar tu efectivo en los próximos días según lo que ya tenés comprometido: cobranzas esperadas, señas por retirar y pagos a proveedores pendientes.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">📈</div><div class="step-body"><div class="step-title">Saldo proyectado</div><div class="step-desc">Es el efectivo estimado para fin de mes: caja actual + ventas esperadas + cobranzas − pagos a proveedores − gastos fijos.</div></div></div>
+        <div class="step"><div class="step-num">🟢</div><div class="step-body"><div class="step-title">Proyección positiva</div><div class="step-desc">Si la línea queda en verde, vas a cerrar el período con saldo a favor. Buen momento para reponer stock o invertir.</div></div></div>
+        <div class="step"><div class="step-num">🔴</div><div class="step-body"><div class="step-title">Proyección negativa</div><div class="step-desc">Si la línea cae en rojo en alguna fecha, significa que vas a necesitar efectivo ese día. Conviene adelantar cobranzas o reprogramar un pago a proveedor.</div></div></div>
+      </div>
+      <div class="info-box">
+        <div class="tip-icon">ℹ️</div>
+        <div class="tip-text"><strong>Clave:</strong> El flujo proyectado es tan preciso como los datos que cargues. Registrá las señas, las cuentas corrientes y los pedidos a proveedores para que la proyección sirva de verdad.</div>
+      </div>
+    </div>
+
+    <!-- SEÑAS -->
+    <div id="mod-senas" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// ventas y caja</div>
+        <div class="module-title">Señas y reservas <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Cuando una clienta deja una seña para reservar una prenda, registrala en DELPA. El sistema lleva el control del saldo y descuenta del stock al retirar.</div>
+      </div>
+      <div class="toc">
+        <div class="toc-title">// En este tutorial</div>
+        <ol>
+          <li onclick="tocGo('senas-registrar')">Registrar una seña</li>
+          <li onclick="tocGo('senas-datos')">Qué datos se guardan</li>
+          <li onclick="tocGo('senas-ticket')">El ticket de seña</li>
+          <li onclick="tocGo('senas-retirar')">Aplicar la seña al retirar</li>
+        </ol>
+      </div>
+      <div class="sec-h3" id="senas-registrar">Registrar una seña</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Señas → Nueva seña</div><div class="step-desc">Hacé click en el módulo <strong>Señas</strong> y después en <strong>+ Nueva seña</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Elegir la clienta y el producto</div><div class="step-desc">Buscá la clienta (o creala al vuelo) y agregá el producto reservado con su <strong>talle y color</strong>. Podés señar más de un artículo.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Ingresar el monto de la seña</div><div class="step-desc">Escribí cuánto deja la clienta. DELPA calcula automáticamente el <strong>saldo pendiente</strong> (precio total − seña).</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Definir la fecha límite</div><div class="step-desc">Indicá hasta cuándo se reserva la mercadería. DELPA te avisa cuando una seña está por vencer para que contactes a la clienta.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Confirmar</div><div class="step-desc">Al confirmar, la seña queda registrada y el monto <strong>se suma automáticamente a la caja del día</strong> como ingreso.</div></div></div>
+      </div>
+      <div class="sec-h3" id="senas-datos">Qué datos se guardan</div>
+      <div class="screen-mock">
+        <div class="screen-bar"><div class="screen-dot" style="background:#FF5F57"></div><div class="screen-dot" style="background:#FFBD2E"></div><div class="screen-dot" style="background:#28CA41"></div><div class="screen-title">DELPA — Seña #142</div></div>
+        <div class="screen-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="mock-field"><label>Clienta</label><div class="mf-input">Romina G.</div></div>
+            <div class="mock-field"><label>Producto / Talle</label><div class="mf-input">Campera Puffer · T.M · Negro</div></div>
+            <div class="mock-field"><label>Precio total</label><div class="mf-input">$89.000</div></div>
+            <div class="mock-field"><label>Seña recibida</label><div class="mf-input pink">$30.000</div></div>
+            <div class="mock-field"><label>Saldo pendiente</label><div class="mf-input" style="color:var(--yellow)">$59.000</div></div>
+            <div class="mock-field"><label>Vence el</label><div class="mf-input">15/07/2026</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-h3" id="senas-ticket">El ticket de seña</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Al registrar la seña, DELPA imprime automáticamente un <strong>comprobante de seña</strong> con los datos de la clienta, el producto reservado, el monto entregado, el saldo pendiente y la fecha límite. La clienta se lleva ese ticket y lo presenta al retirar.</p>
+      <div class="sec-h3" id="senas-retirar">Aplicar la seña al retirar la mercadería</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Buscar la seña</div><div class="step-desc">Cuando la clienta vuelve a retirar, andá a <strong>Señas</strong>, buscala por nombre y abrí la seña.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Convertir en venta</div><div class="step-desc">Hacé click en <strong>Retirar / Convertir en venta</strong>. DELPA arma la venta con el producto reservado y descuenta la seña ya pagada.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Cobrar el saldo</div><div class="step-desc">Solo se cobra el <strong>saldo pendiente</strong> con el medio de pago que elija la clienta. Se descuenta el stock y se emite el ticket final.</div></div></div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>La seña ya está en la caja:</strong> Como el monto de la seña entró a la caja el día que se registró, al retirar solo cobrás el saldo. Así la caja nunca duplica el ingreso.</div>
+      </div>
+      <div class="sec-h2">Preguntas frecuentes</div>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q">¿Qué pasa si la clienta no retira antes de la fecha límite?</div><div class="faq-a">La seña queda marcada como vencida. Vos decidís si la extendés, la devolvés o la das por perdida según tu política. DELPA solo te avisa; no toma la decisión por vos.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Puedo señar varios productos en la misma seña?</div><div class="faq-a">Sí. Podés agregar varios artículos con sus talles. El saldo pendiente se calcula sobre el total de todos los productos reservados.</div></div>
+        <div class="faq-item"><div class="faq-q">¿La seña reserva el stock?</div><div class="faq-a">El producto queda comprometido para esa clienta. Al convertir la seña en venta, recién ahí se descuenta el stock del sistema.</div></div>
+      </div>
+    </div>
+
+    <!-- VALES -->
+    <div id="mod-vales" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// ventas y caja</div>
+        <div class="module-title">Vales de descuento <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Generá vales con código único para regalar, fidelizar o compensar a una clienta. Se aplican con un solo código al momento de la venta.</div>
+      </div>
+      <div class="sec-h3">Crear un vale</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Vales → Nuevo vale</div><div class="step-desc">En el módulo <strong>Vales de descuento</strong>, hacé click en <strong>+ Nuevo vale</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Elegir tipo: monto fijo o porcentaje</div><div class="step-desc">Un vale puede ser por <strong>monto fijo</strong> (ej: $5.000 de descuento) o por <strong>porcentaje</strong> (ej: 15% off). DELPA genera un código único automáticamente.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Configurar el vencimiento</div><div class="step-desc">Definí hasta qué fecha es válido. Pasada esa fecha, el sistema rechaza el código automáticamente.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Imprimir el vale en PDF</div><div class="step-desc">Hacé click en <strong>Imprimir</strong>. DELPA genera un PDF prolijo con el código, el descuento y el vencimiento, listo para entregar o mandar por WhatsApp.</div></div></div>
+      </div>
+      <div class="sec-h3">Aplicar un vale en una venta</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">En la venta, ir al campo "Vale de descuento"</div><div class="step-desc">Debajo del descuento, ingresá el <strong>código del vale</strong> que trae la clienta y tocá <strong>Validar</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">DELPA valida y aplica</div><div class="step-desc">Si el código existe, no venció y no se usó antes, el descuento se aplica al total. Si no, muestra el motivo del rechazo.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">El vale queda usado</div><div class="step-desc">Al confirmar la venta, el vale se marca como <strong>usado</strong> y no puede volver a aplicarse.</div></div></div>
+      </div>
+      <div class="sec-h3">Historial de vales</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">En el módulo de Vales ves todos los vales <strong>disponibles</strong>, <strong>usados</strong> y <strong>vencidos</strong>, con la fecha y la venta en la que se aplicó cada uno.</p>
+      <div class="sec-h2">Preguntas frecuentes</div>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q">¿Un mismo vale se puede usar dos veces?</div><div class="faq-a">No. Cada vale tiene un código único y se invalida automáticamente al usarse en una venta.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Puedo combinar un vale con otro descuento?</div><div class="faq-a">Sí, el vale se suma al descuento por monto o porcentaje que apliques manualmente. El total final refleja ambos.</div></div>
+      </div>
+    </div>
+
+    <!-- GASTOS DEL DÍA -->
+    <div id="mod-gastos" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// ventas y caja</div>
+        <div class="module-title">Gastos del día <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Registrá los gastos chicos del día a día desde la caja: un flete, una limpieza, un café para la clienta. Quedan reflejados en el cierre.</div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Caja → Registrar gasto</div><div class="step-desc">Con la caja abierta, hacé click en <strong>Registrar gasto</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Elegir la categoría</div><div class="step-desc">Seleccioná la categoría del gasto: <strong>Flete / Envío</strong>, <strong>Limpieza</strong>, <strong>Mantenimiento</strong>, <strong>Insumos</strong>, <strong>Varios</strong>, etc. Esto sirve después para analizar en qué se va la plata.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Ingresar monto y descripción</div><div class="step-desc">Escribí el importe y un detalle breve. El gasto descuenta de la caja en el momento.</div></div></div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>Pensado para las vendedoras:</strong> Cargar un gasto NO requiere acceso a Configuración ni permisos de administrador. Cualquier vendedora puede registrar un gasto del día sin ver datos sensibles del negocio.</div>
+      </div>
+      <div class="info-box">
+        <div class="tip-icon">ℹ️</div>
+        <div class="tip-text"><strong>En el cierre de caja:</strong> Todos los gastos del día aparecen detallados y restados en el informe de cierre, así el efectivo final cuadra exactamente con lo que hay en el cajón.</div>
+      </div>
+    </div>
+
+    <!-- PEDIDOS A PROVEEDORES -->
+    <div id="mod-pedidos" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// stock e inventario</div>
+        <div class="module-title">Pedidos a proveedores <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Armá los pedidos de reposición, mandalos al proveedor por WhatsApp y, al recibirlos, convertilos en ingreso de stock con un click.</div>
+      </div>
+      <div class="toc">
+        <div class="toc-title">// En este tutorial</div>
+        <ol>
+          <li onclick="tocGo('ped-crear')">Crear un pedido</li>
+          <li onclick="tocGo('ped-minimo')">Agregar desde stock mínimo</li>
+          <li onclick="tocGo('ped-pdf')">Generar el PDF</li>
+          <li onclick="tocGo('ped-estados')">Estados del pedido</li>
+          <li onclick="tocGo('ped-recibir')">Recibir el pedido</li>
+        </ol>
+      </div>
+      <div class="sec-h3" id="ped-crear">Crear un pedido nuevo</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Pedidos → Nuevo pedido</div><div class="step-desc">Elegí el <strong>proveedor</strong> al que le vas a comprar.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Agregar productos con grilla de talles</div><div class="step-desc">Buscá cada producto y, en la grilla, indicá cuántas unidades de cada talle querés pedir. El total del pedido se calcula solo.</div></div></div>
+      </div>
+      <div class="sec-h3" id="ped-minimo">Botón "Agregar desde stock mínimo"</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Este botón es el atajo que más tiempo te ahorra. Al tocarlo, DELPA revisa todos los productos cuyo stock cayó por debajo del <strong>mínimo configurado</strong> y los agrega solos al pedido con la cantidad sugerida para reponer. Vos solo ajustás y confirmás.</p>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>Cargá el stock mínimo:</strong> Para que este botón funcione, definí el <strong>stock mínimo</strong> por talle al cargar tus productos. Sin mínimo, DELPA no sabe qué reponer.</div>
+      </div>
+      <div class="sec-h3" id="ped-pdf">Generar el PDF para el proveedor</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Hacé click en <strong>Generar PDF</strong> y obtenés un documento ordenado con el detalle del pedido (producto, talles, cantidades). Lo mandás directo al proveedor por <strong>WhatsApp</strong> o email.</p>
+      <div class="sec-h3" id="ped-estados">Estados del pedido</div>
+      <div class="states-flow">
+        <span class="state-pill">📝 Borrador</span><span class="state-arrow">→</span>
+        <span class="state-pill b">📤 Enviado</span><span class="state-arrow">→</span>
+        <span class="state-pill y">✓ Confirmado</span><span class="state-arrow">→</span>
+        <span class="state-pill g">📦 Recibido</span>
+      </div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px"><strong>Borrador:</strong> lo estás armando. <strong>Enviado:</strong> ya se lo mandaste al proveedor. <strong>Confirmado:</strong> el proveedor confirmó que lo prepara. <strong>Recibido:</strong> llegó la mercadería.</p>
+      <div class="sec-h3" id="ped-recibir">Al marcar "Recibido"</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Marcar el pedido como Recibido</div><div class="step-desc">Cuando llega la mercadería, abrí el pedido y tocá <strong>Marcar como recibido</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Se convierte en Ingreso de Mercadería</div><div class="step-desc">DELPA convierte el pedido en un <strong>ingreso de stock automáticamente</strong>: suma todas las unidades al inventario sin que tengas que volver a cargarlas.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Opción: marcar como consignación</div><div class="step-desc">Al recibir, podés tildar <strong>Ingreso en consignación</strong> si esa mercadería se paga recién cuando se vende. DELPA la registra como consignada y lleva la deuda al proveedor automáticamente.</div></div></div>
+      </div>
+      <div class="sec-h2">Preguntas frecuentes</div>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q">¿Puedo recibir un pedido parcial?</div><div class="faq-a">Sí. Al recibir podés ajustar las cantidades que realmente llegaron. Solo se suma al stock lo que efectivamente entró.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Tengo que volver a cargar la mercadería al recibirla?</div><div class="faq-a">No. Ese es el punto del módulo: al marcar Recibido, el ingreso de stock se genera solo a partir del pedido. Cero doble carga.</div></div>
+      </div>
+    </div>
+
+    <!-- REMITOS -->
+    <div id="mod-remitos" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// stock e inventario</div>
+        <div class="module-title">Remitos <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Generá remitos para acompañar mercadería que sale del local: una venta a domicilio, una transferencia a otra sucursal o una devolución.</div>
+      </div>
+      <div class="toc">
+        <div class="toc-title">// En este tutorial</div>
+        <ol>
+          <li onclick="tocGo('rem-que')">Qué es un remito</li>
+          <li onclick="tocGo('rem-tipos')">Tipos de remito</li>
+          <li onclick="tocGo('rem-crear')">Crear un remito</li>
+          <li onclick="tocGo('rem-estados')">Estados del remito</li>
+        </ol>
+      </div>
+      <div class="sec-h3" id="rem-que">¿Qué es un remito?</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Un remito es el documento que acompaña a la mercadería cuando se mueve físicamente, sin ser una factura. Sirve como comprobante de entrega: detalla qué productos salieron, a dónde van y quién los recibe.</p>
+      <div class="sec-h3" id="rem-tipos">Tipos de remito</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px"><div style="font-size:22px;margin-bottom:8px">🏠</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:4px;font-size:14px">Venta a domicilio</div><div style="color:var(--text2);font-size:12px">Acompaña un envío a la casa de la clienta.</div></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px"><div style="font-size:22px;margin-bottom:8px">🔁</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:4px;font-size:14px">Entre sucursales</div><div style="color:var(--text2);font-size:12px">Transferencia de stock de un local a otro.</div></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px"><div style="font-size:22px;margin-bottom:8px">↩️</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:4px;font-size:14px">Devolución</div><div style="color:var(--text2);font-size:12px">Mercadería que se devuelve a un proveedor.</div></div>
+      </div>
+      <div class="sec-h3" id="rem-crear">Cómo crear un remito paso a paso</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Remitos → Nuevo remito</div><div class="step-desc">Elegí el <strong>tipo</strong> de remito (domicilio, sucursal o devolución).</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Completar el destino</div><div class="step-desc">Según el tipo: la dirección de la clienta, la sucursal de destino o el proveedor.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Agregar los productos</div><div class="step-desc">Buscá o escaneá los productos con sus talles y cantidades que van a salir del local.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Generar el PDF con campo de firma</div><div class="step-desc">DELPA genera un PDF con el detalle y un <strong>campo de firma</strong> para que quien recibe firme la conformidad de la entrega.</div></div></div>
+      </div>
+      <div class="sec-h3" id="rem-estados">Estados del remito</div>
+      <div class="states-flow">
+        <span class="state-pill y">⏳ Pendiente</span><span class="state-arrow">→</span>
+        <span class="state-pill g">✓ Entregado</span>
+        <span class="state-arrow">/</span>
+        <span class="state-pill p">✕ Rechazado</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">⏳</div><div class="step-body"><div class="step-title">Pendiente</div><div class="step-desc">El remito está emitido pero la mercadería todavía no se entregó/confirmó.</div></div></div>
+        <div class="step"><div class="step-num">✓</div><div class="step-body"><div class="step-title">Entregado</div><div class="step-desc">Al marcarlo como <strong>Entregado</strong>, DELPA <strong>actualiza el stock automáticamente</strong>: descuenta del origen (y suma a la sucursal de destino si es una transferencia).</div></div></div>
+        <div class="step"><div class="step-num">✕</div><div class="step-body"><div class="step-title">Rechazado</div><div class="step-desc">Si la entrega no se concretó, lo marcás como Rechazado y el stock no se modifica.</div></div></div>
+      </div>
+      <div class="sec-h2">Preguntas frecuentes</div>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q">¿El remito descuenta stock al emitirlo?</div><div class="faq-a">No. El stock se ajusta recién cuando marcás el remito como <strong>Entregado</strong>. Mientras está Pendiente, no toca el inventario.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Sirve para mover stock entre dos locales?</div><div class="faq-a">Sí. Con el tipo "Entre sucursales", al entregar descuenta del local de origen y suma al de destino en un solo paso.</div></div>
+      </div>
+    </div>
+
+    <!-- PROVEEDORES -->
+    <div id="mod-proveedores" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// proveedores</div>
+        <div class="module-title">Proveedores <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Tené todos tus proveedores ordenados, con su historial de compras, los pagos que les hiciste y cuánto les debés.</div>
+      </div>
+      <div class="sec-h3">Crear y editar proveedores</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Proveedores → Nuevo proveedor</div><div class="step-desc">Cargá nombre, CUIT, teléfono, email y notas. Podés editar estos datos cuando quieras.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Asociarlo a tus compras</div><div class="step-desc">Cada ingreso de mercadería y cada pedido se asocian a un proveedor, así se arma el historial solo.</div></div></div>
+      </div>
+      <div class="sec-h3">Historial de compras por proveedor</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">En la ficha de cada proveedor ves todas las compras que le hiciste, con fecha, monto y detalle. Útil para negociar precios y saber cuánto le comprás por mes.</p>
+      <div class="sec-h3">Pagos parciales y deuda acumulada</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Registrar un pago parcial</div><div class="step-desc">Cuando le pagás al proveedor, registrá el pago (total o parcial) desde su ficha. DELPA descuenta ese monto de la deuda.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Ver la deuda acumulada</div><div class="step-desc">La ficha muestra siempre el <strong>saldo pendiente</strong>: total comprado − total pagado. Así sabés de un vistazo a quién le debés y cuánto.</div></div></div>
+      </div>
+      <div class="screen-mock">
+        <div class="screen-bar"><div class="screen-dot" style="background:#FF5F57"></div><div class="screen-dot" style="background:#FFBD2E"></div><div class="screen-dot" style="background:#28CA41"></div><div class="screen-title">DELPA — Proveedor: Las Locas</div></div>
+        <div class="screen-body">
+          <table class="mock-table">
+            <tr><th>Fecha</th><th>Concepto</th><th>Monto</th></tr>
+            <tr><td>02/06</td><td>Compra ingreso #88</td><td>$420.000</td></tr>
+            <tr><td>10/06</td><td>Pago parcial</td><td style="color:var(--green)">- $200.000</td></tr>
+            <tr><td>21/06</td><td>Compra ingreso #95</td><td>$310.000</td></tr>
+          </table>
+          <div style="display:flex;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-weight:700"><span>Deuda acumulada</span><span style="color:var(--yellow)">$530.000</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GASTOS FIJOS -->
+    <div id="mod-gastosfijos" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// facturación y fiscal</div>
+        <div class="module-title">Configuración de gastos fijos <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Los gastos fijos son la base para que DELPA te diga tu ganancia real y cuánto tenés que vender para no perder plata.</div>
+      </div>
+      <div class="sec-h3">¿Para qué sirven?</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Son los gastos que tenés todos los meses sí o sí: alquiler, sueldos, servicios, impuestos, contador. DELPA los usa para calcular dos números clave: tu <strong>rentabilidad real</strong> (lo que de verdad ganás después de pagar todo) y tu <strong>punto de equilibrio</strong> (cuánto necesitás vender para cubrir los costos).</p>
+      <div class="sec-h3">Cómo cargarlos</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Configuración → Gastos Fijos</div><div class="step-desc">Hacé click en el engranaje ⚙️ y entrá a <strong>Gastos Fijos</strong>.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Agregar cada gasto mensual</div><div class="step-desc">Cargá concepto y monto: Alquiler $X, Sueldos $X, Luz $X, Internet $X, Contador $X, etc. Sumá todos los que tengas.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Mantenerlos actualizados</div><div class="step-desc">Cuando cambia un monto (ej: aumenta el alquiler), actualizalo. El Dashboard recalcula todo automáticamente.</div></div></div>
+      </div>
+      <div class="sec-h3">Cómo afectan los cálculos</div>
+      <div class="info-box">
+        <div class="tip-icon">ℹ️</div>
+        <div class="tip-text"><strong>Rentabilidad real</strong> = Ventas − costo de la mercadería − <strong>gastos fijos</strong>. <strong>Punto de equilibrio</strong> = cuánto vender para que las ventas cubran los gastos fijos + el costo de lo vendido. Sin gastos fijos cargados, estos números no son confiables.</div>
+      </div>
+      <div class="warn-box">
+        <div class="tip-icon">⚠️</div>
+        <div class="tip-text"><strong>Error común:</strong> Mirar solo la venta bruta y creer que todo eso es ganancia. La ganancia real aparece recién después de descontar la mercadería y los gastos fijos. Por eso es clave cargarlos bien.</div>
+      </div>
+    </div>
+
+    <!-- SCORE -->
+    <div id="mod-score" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// reportes</div>
+        <div class="module-title">Score de salud del negocio <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">Un número del 0 al 100 que resume qué tan bien estás usando DELPA y qué tan sano está tu negocio. Cuanto más alto, mejor.</div>
+      </div>
+      <div class="sec-h3">¿Qué es el score?</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Es un indicador único que combina varios aspectos de tu negocio en un solo puntaje. Te sirve para saber, de un vistazo, si vas bien o si hay algo que estás descuidando.</p>
+      <div class="progress-demo">
+        <div class="pd-label"><span>Score de salud del negocio</span><span style="color:var(--green)">82 / 100 — Muy bueno</span></div>
+        <div class="pd-bar"><div class="pd-fill" style="width:82%"></div></div>
+      </div>
+      <div class="sec-h3">Cómo se calcula</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">⚙️</div><div class="step-body"><div class="step-title">Configuración</div><div class="step-desc">Datos del negocio completos, logo, email, gastos fijos y backups activos.</div></div></div>
+        <div class="step"><div class="step-num">📦</div><div class="step-body"><div class="step-title">Stock</div><div class="step-desc">Productos con precio de costo, stock mínimo definido y poco stock en cero o sin rotación.</div></div></div>
+        <div class="step"><div class="step-num">🏪</div><div class="step-body"><div class="step-title">Ventas</div><div class="step-desc">Constancia de ventas, uso de la caja y vendedoras asignadas.</div></div></div>
+        <div class="step"><div class="step-num">👥</div><div class="step-body"><div class="step-title">Clientes</div><div class="step-desc">Clientas cargadas, fidelización activa y cuentas corrientes al día.</div></div></div>
+        <div class="step"><div class="step-num">💰</div><div class="step-body"><div class="step-title">Finanzas</div><div class="step-desc">Rentabilidad positiva, gastos controlados y deudas a proveedores bajo control.</div></div></div>
+      </div>
+      <div class="sec-h3">Tips para mejorar el score</div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>Ganancias rápidas:</strong> cargá el <strong>precio de costo</strong> en todos los productos, definí el <strong>stock mínimo</strong>, completá los <strong>gastos fijos</strong>, conectá <strong>Google Drive</strong> para backups y asigná siempre la <strong>vendedora</strong> y la <strong>clienta</strong> en cada venta. Cada cosa suma puntos.</div>
+      </div>
+      <div class="sec-h3">¿Por qué importa mantenerlo alto?</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Un score alto no es un capricho: significa que tus datos están completos y, por lo tanto, que <strong>todos los reportes, alertas y proyecciones de DELPA son confiables</strong>. Con datos a medias, las decisiones también salen a medias.</p>
+    </div>
+
+    <!-- INFORMES POR EMAIL -->
+    <div id="mod-informes" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// automatizaciones</div>
+        <div class="module-title">Informes automáticos por email <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">DELPA te manda solo, por email, un resumen de cómo viene el negocio. No tenés que entrar a buscar nada.</div>
+      </div>
+      <div class="sec-h3">Informe semanal</div>
+      <div class="info-box">
+        <div class="tip-icon">📅</div>
+        <div class="tip-text"><strong>Todos los lunes a las 19hs</strong> recibís un resumen de la semana: total vendido, comparación con la semana anterior, productos más vendidos, gastos y rentabilidad.</div>
+      </div>
+      <div class="sec-h3">Informe mensual</div>
+      <div class="info-box">
+        <div class="tip-icon">🗓️</div>
+        <div class="tip-text"><strong>El 1° de cada mes</strong> llega el cierre del mes anterior: facturación total, rentabilidad real, ranking de productos, situación fiscal y comparación contra el mes previo. Ideal para mandárselo al contador.</div>
+      </div>
+      <div class="sec-h3">Cómo configurarlo</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Ir a Configuración → Informes automáticos</div><div class="step-desc">Activá el informe semanal y/o mensual con los interruptores.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Definir el email destino</div><div class="step-desc">Ingresá el email donde querés recibir los informes (normalmente el tuyo).</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Agregar el CC del contador</div><div class="step-desc">Podés sumar un email en <strong>copia (CC)</strong> para que tu contador reciba el informe mensual automáticamente, sin que tengas que reenviárselo.</div></div></div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-text"><strong>Requisito:</strong> Para que los informes salgan, tenés que tener configurado el email de envío (Configuración → Email, con la contraseña de aplicación de Gmail).</div>
+      </div>
+    </div>
+
+    <!-- SISTEMA / ACTUALIZAR -->
+    <div id="mod-sistema" class="module">
+      <div class="module-header">
+        <div class="module-eyebrow">// sistema</div>
+        <div class="module-title">Actualizar el sistema <span class="badge-new">NUEVO</span></div>
+        <div class="module-desc">DELPA se actualiza solo. Cada vez que sacamos mejoras, te llegan sin que tengas que reinstalar nada.</div>
+      </div>
+      <div class="sec-h3">Cómo funciona el auto-update</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Al abrir DELPA</div><div class="step-desc">Cada vez que abrís el sistema, revisa en segundo plano si hay una versión nueva disponible.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Descarga automática</div><div class="step-desc">Si hay novedades, la actualización se descarga sola mientras seguís trabajando. No interrumpe tus ventas.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Se aplica al reiniciar</div><div class="step-desc">La próxima vez que cerrás y abrís DELPA, ya estás en la versión nueva. Listo.</div></div></div>
+      </div>
+      <div class="sec-h3">Buscar actualizaciones manualmente</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Si querés forzar la búsqueda, andá a <strong>Configuración → Acerca de</strong> y tocá <strong>Buscar actualizaciones</strong>. DELPA te dice si ya estás al día o si hay una versión nueva para bajar.</p>
+      <div class="sec-h3">Changelog de novedades</div>
+      <p style="color:var(--text2);font-size:15px;margin-bottom:20px">Después de cada actualización, DELPA muestra un <strong>resumen de novedades</strong> con lo nuevo y lo que se mejoró, para que sepas qué cambió y aproveches las funciones nuevas.</p>
+      <div class="sec-h2">Preguntas frecuentes</div>
+      <div class="faq">
+        <div class="faq-item"><div class="faq-q">¿La actualización borra mis datos?</div><div class="faq-a">No. Las actualizaciones solo cambian el programa; tu base de datos (productos, ventas, clientes) queda intacta. Igual, recomendamos tener Google Drive conectado para backups.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Qué hago si la actualización no llega?</div><div class="faq-a">Verificá tu conexión a internet y probá <strong>Buscar actualizaciones</strong> manualmente en Configuración → Acerca de. Si el problema sigue, escribinos por WhatsApp y te pasamos el instalador de la última versión.</div></div>
       </div>
     </div>
 
@@ -968,6 +1462,17 @@ document.getElementById('search-input').addEventListener('input', function() {
     'reporte': 'reportes', 'ranking': 'reportes',
     'dashboard': 'dashboard', 'ia': 'dashboard',
     'licencia': 'licencia', 'activar': 'licencia',
+    'seña': 'senas', 'sena': 'senas', 'reserva': 'senas',
+    'vale': 'vales', 'cupon': 'vales', 'codigo de descuento': 'vales',
+    'gasto del dia': 'gastos', 'gasto': 'gastos',
+    'pedido': 'pedidos', 'reposicion': 'pedidos', 'stock minimo': 'pedidos',
+    'remito': 'remitos', 'sucursal': 'remitos', 'domicilio': 'remitos',
+    'proveedor': 'proveedores', 'deuda': 'proveedores',
+    'gastos fijos': 'gastosfijos', 'alquiler': 'gastosfijos', 'equilibrio': 'gastosfijos',
+    'score': 'score', 'salud': 'score',
+    'informe': 'informes', 'semanal': 'informes', 'mensual': 'informes', 'contador': 'informes',
+    'actualizar': 'sistema', 'actualizacion': 'sistema', 'update': 'sistema', 'version': 'sistema',
+    'multiple': 'ventas', 'dividir': 'ventas',
   };
   for (const [key, val] of Object.entries(map)) {
     if (q.includes(key)) {
@@ -986,6 +1491,27 @@ document.querySelectorAll('.sidebar-link').forEach(btn => {
     document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
     this.classList.add('active');
   });
+});
+
+// TOC: saltar a una sub-sección del tutorial
+function tocGo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Inyectar el CTA de WhatsApp al final de cada tutorial
+document.querySelectorAll('.module').forEach(m => {
+  const cta = document.createElement('div');
+  cta.className = 'wa-cta';
+  cta.innerHTML = '<div class="wa-cta-title">¿Te quedó alguna duda?</div>' +
+    '<a href="https://wa.me/5491138574444?text=Hola,%20tengo%20una%20consulta%20sobre%20DELPA" target="_blank">💬 Consultanos por WhatsApp</a>';
+  m.appendChild(cta);
+});
+
+// FAQ: abrir / cerrar
+document.addEventListener('click', function(e) {
+  const q = e.target.closest('.faq-q');
+  if (q) q.parentElement.classList.toggle('open');
 });
 </script>
 </body>
