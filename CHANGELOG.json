@@ -1,4 +1,12 @@
 {
+  "v1.12.2": {
+    "fecha": "2026-07-04",
+    "titulo": "Datos del local en el ticket de cambio",
+    "mejoras": [],
+    "correcciones": [
+      "El ticket de cambio individual (80mm) ahora muestra dirección, teléfono, web e Instagram del local"
+    ]
+  },
   "v1.12.1": {
     "fecha": "2026-07-04",
     "titulo": "Ticket de cambio individual en 80mm",
