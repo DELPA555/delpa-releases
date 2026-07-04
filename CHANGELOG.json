@@ -1,4 +1,15 @@
 {
+  "v1.12.0": {
+    "fecha": "2026-07-04",
+    "titulo": "Sesión permanente y recargos en cambios",
+    "mejoras": [
+      "Sesión permanente configurable: la app recuerda tu usuario y no te pide la clave cada vez",
+      "Opción de cerrar sesión por inactividad (configurable en Configuración → Seguridad)",
+      "Los recargos por medio de pago (débito/crédito) ahora se aplican también a la diferencia en los cambios",
+      "El ticket de cambio muestra el desglose: diferencia + recargo + total"
+    ],
+    "correcciones": []
+  },
   "v1.11.0": {
     "fecha": "2026-07-04",
     "titulo": "Tickets de cambio para regalo y vencimiento de puntos",
