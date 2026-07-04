@@ -1,0 +1,37 @@
+{
+  "v1.11.0": {
+    "fecha": "2026-07-04",
+    "titulo": "Tickets de cambio para regalo y vencimiento de puntos",
+    "mejoras": [
+      "Ticket de cambio con dos opciones: común (con precios) o individuales para regalo (sin precio, 2 por hoja A4)",
+      "Tickets de cambio con número correlativo (CAM-2026-0001) y vencimiento configurable (30 días por defecto)",
+      "Puntos de fidelización con vencimiento a 6 meses: aviso en la ficha del cliente y en el ticket",
+      "Verificación de vigencia del ticket al registrar un cambio",
+      "Cartel de novedades al actualizar la app"
+    ],
+    "correcciones": [
+      "El cartel de novedades ahora aparece en cada actualización"
+    ]
+  },
+  "v1.10.0": {
+    "fecha": "2026-07-03",
+    "titulo": "Puntos sobre el precio sin recargo",
+    "mejoras": [],
+    "correcciones": [
+      "Los puntos de fidelización se calculan sobre el precio sin recargo (débito/crédito), no sobre el total"
+    ]
+  },
+  "v1.8.0": {
+    "fecha": "2026-07-04",
+    "titulo": "Stock por proveedor, cambios múltiples y más",
+    "mejoras": [
+      "Stock por proveedor en Inventario, Consignación y Reportes",
+      "Envío de stock por email al proveedor",
+      "Cambios con múltiples productos en ambos lados",
+      "Panel admin muestra nombre real del negocio"
+    ],
+    "correcciones": [
+      "Nombre del negocio en panel admin"
+    ]
+  }
+}
