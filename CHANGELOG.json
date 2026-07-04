@@ -1,4 +1,12 @@
 {
+  "v1.12.1": {
+    "fecha": "2026-07-04",
+    "titulo": "Ticket de cambio individual en 80mm",
+    "mejoras": [],
+    "correcciones": [
+      "El ticket de cambio individual ahora se imprime en impresora térmica de 80mm (antes salía en A4)"
+    ]
+  },
   "v1.12.0": {
     "fecha": "2026-07-04",
     "titulo": "Sesión permanente y recargos en cambios",
