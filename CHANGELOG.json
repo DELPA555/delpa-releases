@@ -1,4 +1,29 @@
 {
+  "v1.14.0": {
+    "fecha": "2026-07-09",
+    "titulo": "Caja Grande: aperturas, cierres y avisos por email",
+    "mejoras": [
+      "Apertura de Caja Grande con recuento físico inicial y diferencia de apertura",
+      "Cierre de Caja Grande con conteo físico, ajuste automático por diferencia y observaciones",
+      "Email automático por cada ingreso o egreso, con saldo anterior y saldo actual",
+      "Email de cierre con el resumen completo del día y el detalle de movimientos",
+      "Nueva pestaña Historial con todas las aperturas y cierres y sus diferencias"
+    ],
+    "correcciones": []
+  },
+  "v1.13.0": {
+    "fecha": "2026-07-09",
+    "titulo": "Nueva Caja Grande (Caja Mayor)",
+    "mejoras": [
+      "Caja central acumulativa que junta el efectivo de las cajas chicas y nunca se resetea",
+      "Al cerrar una caja chica podés transferir el efectivo a la Caja Grande con un clic",
+      "Ingresos y egresos manuales (depósitos, pagos a proveedor, retiros) con categorías",
+      "Arqueo de Caja Grande: contás el efectivo físico y ves la diferencia vs el saldo esperado",
+      "Reportes: comparativa mes a mes e informe imprimible en PDF",
+      "Widget de Caja Grande en el Dashboard con acceso rápido"
+    ],
+    "correcciones": []
+  },
   "v1.12.2": {
     "fecha": "2026-07-04",
     "titulo": "Datos del local en el ticket de cambio",
