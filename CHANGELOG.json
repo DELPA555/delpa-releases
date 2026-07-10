@@ -1,4 +1,18 @@
 {
+  "v1.15.0": {
+    "fecha": "2026-07-10",
+    "titulo": "Fix gastos en el cierre de caja y permisos de vendedora",
+    "mejoras": [
+      "Las vendedoras ahora acceden a Ingreso y Egreso de mercadería",
+      "Las vendedoras pueden ver Productos y Clientes (solo consulta, sin editar ni eliminar)",
+      "El sidebar oculta los módulos que la vendedora no tiene habilitados"
+    ],
+    "correcciones": [
+      "El cierre de caja ahora resta correctamente los gastos pagados en efectivo del efectivo esperado",
+      "Los gastos pagados por transferencia u otros medios ya no afectan el efectivo esperado del cajón",
+      "El informe PDF de cierre muestra el descuento de los gastos en efectivo"
+    ]
+  },
   "v1.14.0": {
     "fecha": "2026-07-09",
     "titulo": "Caja Grande: aperturas, cierres y avisos por email",
