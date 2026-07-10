@@ -1,4 +1,16 @@
 {
+  "v1.16.0": {
+    "fecha": "2026-07-10",
+    "titulo": "Transferencia automática a Caja Grande y hora correcta en emails",
+    "mejoras": [
+      "Al cerrar la caja chica, el efectivo contado se transfiere automáticamente a la Caja Grande (ya no pregunta)",
+      "El cierre envía un email de la transferencia con el saldo anterior y actual de la Caja Grande",
+      "El modal de cierre avisa el monto que se va a transferir"
+    ],
+    "correcciones": [
+      "Las horas en los emails (cierre de caja, caja grande, resúmenes) ahora muestran la hora real de Argentina (antes salían 3 horas más tarde)"
+    ]
+  },
   "v1.15.0": {
     "fecha": "2026-07-10",
     "titulo": "Fix gastos en el cierre de caja y permisos de vendedora",
