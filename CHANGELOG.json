@@ -1,4 +1,14 @@
 {
+  "v1.17.0": {
+    "fecha": "2026-07-11",
+    "titulo": "Las vendedoras pueden editar el precio de venta",
+    "mejoras": [
+      "En Productos, la vendedora ve un lápiz junto al precio para editarlo rápido",
+      "Mini ventana con solo el campo Precio de venta (sin ver el costo ni tocar el resto)",
+      "Cada cambio de precio queda registrado en el historial con el usuario que lo hizo"
+    ],
+    "correcciones": []
+  },
   "v1.16.0": {
     "fecha": "2026-07-10",
     "titulo": "Transferencia automática a Caja Grande y hora correcta en emails",
