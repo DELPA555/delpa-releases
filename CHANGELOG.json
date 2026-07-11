@@ -1,4 +1,15 @@
 {
+  "v1.18.0": {
+    "fecha": "2026-07-11",
+    "titulo": "Las vendedoras pueden crear productos",
+    "mejoras": [
+      "La vendedora puede crear productos nuevos desde el botón + Nuevo producto",
+      "El formulario para vendedora muestra solo nombre, marca, categoría, color, precio y talles con stock",
+      "No ve el precio de costo, la ganancia ni la consignación",
+      "Cada producto creado queda registrado en auditoría con el usuario que lo creó"
+    ],
+    "correcciones": []
+  },
   "v1.17.0": {
     "fecha": "2026-07-11",
     "titulo": "Las vendedoras pueden editar el precio de venta",
