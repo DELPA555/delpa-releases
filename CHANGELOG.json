@@ -1,4 +1,14 @@
 {
+  "v1.18.1": {
+    "fecha": "2026-07-12",
+    "titulo": "Fix: los gastos en efectivo ahora cuadran la caja",
+    "mejoras": [],
+    "correcciones": [
+      "El efectivo esperado del cierre resta correctamente los gastos en efectivo, aunque el gasto se haya cargado antes de abrir la caja (ej: alquiler pagado a la mañana)",
+      "La transferencia a la Caja Grande usa el efectivo neto (ventas − gastos en efectivo), no el total bruto",
+      "El desglose de caja del Dashboard también descuenta los gastos en efectivo"
+    ]
+  },
   "v1.18.0": {
     "fecha": "2026-07-11",
     "titulo": "Las vendedoras pueden crear productos",
