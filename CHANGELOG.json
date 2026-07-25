@@ -1,4 +1,15 @@
 {
+  "v1.19.0": {
+    "fecha": "2026-07-25",
+    "titulo": "Fix: la ganancia ahora considera el descuento aplicado",
+    "mejoras": [],
+    "correcciones": [
+      "La ganancia de cada venta se calcula sobre el precio real cobrado (con el descuento aplicado), no sobre el precio de lista",
+      "El descuento de la venta se reparte proporcionalmente entre los productos para calcular bien la ganancia de cada uno",
+      "Corregido en todos los reportes: rentabilidad del día y del mes, ranking de productos, rentabilidad por categoría, márgenes por proveedor y punto de equilibrio",
+      "Las ventas anteriores se recalculan automáticamente al actualizar la app"
+    ]
+  },
   "v1.18.1": {
     "fecha": "2026-07-12",
     "titulo": "Fix: los gastos en efectivo ahora cuadran la caja",
