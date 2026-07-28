@@ -1,4 +1,32 @@
 {
+  "v1.21.0": {
+    "fecha": "2026-07-27",
+    "titulo": "Nuevo Dashboard e Informes semanales y mensuales",
+    "mejoras": [
+      "Nuevo módulo Informes en el menú: mirá el resumen semanal y mensual del negocio cuando quieras, incluso sin internet",
+      "Botones para generar el informe al instante, enviarlo por email o imprimirlo",
+      "Informes por email rediseñados con el estilo DELPA: ventas, ganancia neta, comparativa con el período anterior, mejor y peor día, ticket promedio y gráfico de ventas por día",
+      "Cada informe suma stock por agotarse (según cuánto se vende), top productos y clientas, medios de pago, gastos y control de monotributo",
+      "El informe mensual agrega rentabilidad por categoría, colores más vendidos, ranking de vendedoras, comparativa con el año anterior y proyección del próximo mes",
+      "Recomendaciones automáticas: qué reponer, a qué clientas contactar y dónde estás perdiendo margen",
+      "Elegí el día y la hora de envío del informe semanal y mensual en Configuración → Email",
+      "Dashboard renovado: ventas del día comparadas con ayer, ganancia neta con margen, clientes atendidos con ticket promedio y la caja actual de un vistazo",
+      "Nuevos paneles en el Dashboard: top productos del día, últimas ventas en vivo, mejores clientas del mes y clientas con saldo pendiente con botón de WhatsApp"
+    ],
+    "correcciones": []
+  },
+  "v1.20.0": {
+    "fecha": "2026-07-25",
+    "titulo": "Imprimir stock con filtros flexibles",
+    "mejoras": [
+      "El botón Imprimir Stock ahora abre una ventana con filtros: por categoría, por proveedor o productos elegidos a mano",
+      "Podés mostrar u ocultar el precio de venta, el precio de costo y el valor del stock (costo × cantidad)",
+      "Ordená y agrupá por nombre, categoría, proveedor o cantidad, con subtotales y total general",
+      "Enviá el reporte por email; si filtrás por un solo proveedor con email cargado, le llega directo a él",
+      "La vendedora nunca ve el costo, aunque genere el reporte"
+    ],
+    "correcciones": []
+  },
   "v1.19.0": {
     "fecha": "2026-07-25",
     "titulo": "Fix: la ganancia ahora considera el descuento aplicado",
