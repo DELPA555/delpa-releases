@@ -1,4 +1,18 @@
 {
+  "v1.24.0": {
+    "fecha": "2026-09-10",
+    "titulo": "Dashboard renovado, más completo y visual",
+    "mejoras": [
+      "Nuevo Dashboard de un vistazo: saludo según la hora, fecha argentina, estado de conexión (Tienda Nube / Drive / AFIP) y botón para actualizar con la hora de la última actualización",
+      "5 tarjetas grandes arriba: ventas del día (con mini gráfico de las últimas horas y comparación con ayer), ganancia neta y margen con color, ticket promedio, caja actual (chica + grande) y clientas del día (nuevas vs recurrentes)",
+      "Gráfico principal de evolución de ventas con selector de período (7 días a 6 meses), línea del período anterior, promedio móvil de 7 días, cambio entre monto y cantidad de ventas y estrella en los récords históricos",
+      "Análisis en vivo: ventas de hoy en tiempo real, top productos del día con barras, y torta de medios de pago",
+      "Velocímetro del ritmo del día con proyección de cierre, punto de equilibrio del mes, alertas de stock crítico con acceso directo a reponer y recomendaciones automáticas",
+      "Financiero del mes: rentabilidad real, flujo de caja proyectado por semana, control fiscal (monotributo o IVA), top clientas del mes, fidelización y un score de salud del negocio",
+      "Los datos que cambian (ventas y caja) se actualizan solos cada 60 segundos, sin recargar"
+    ],
+    "correcciones": []
+  },
   "v1.23.0": {
     "fecha": "2026-09-10",
     "titulo": "Buscar y filtrar productos por talle",
