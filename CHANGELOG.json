@@ -1,4 +1,15 @@
 {
+  "v1.26.0": {
+    "fecha": "2026-09-10",
+    "titulo": "Datos de soporte y ventas siempre a mano",
+    "mejoras": [
+      "Nuevo pie de página siempre visible con el contacto de soporte: 📱 11 3857-4444 | delpagestion.com.ar",
+      "En Configuración → Licencia se agregó una sección 'Soporte y ventas' y 'Acerca de DELPA' (versión del sistema, WhatsApp, email y sitio)",
+      "Las pantallas de prueba y de licencia vencida ahora muestran el WhatsApp de ventas (11 3857-4444) con botón para escribir directo y activar la licencia",
+      "El período de prueba para instalaciones nuevas pasó a 14 días (las instalaciones que ya venían en curso conservan su prueba original)"
+    ],
+    "correcciones": []
+  },
   "v1.25.0": {
     "fecha": "2026-09-10",
     "titulo": "Ventas más lindas y carrito que no se pierde",
