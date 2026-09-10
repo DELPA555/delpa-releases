@@ -1,4 +1,17 @@
 {
+  "v1.27.0": {
+    "fecha": "2026-09-10",
+    "titulo": "Nueva pantalla de inicio de sesión",
+    "mejoras": [
+      "Login rediseñado a pantalla completa: fondo oscuro con grid animado y un glow rosa sutil, y una tarjeta centrada con animación de entrada",
+      "Saludo según la hora (buenos días / tardes / noches) y bienvenida con el nombre y logo de tu negocio",
+      "Campos de usuario y contraseña más claros, con íconos, borde rosa al escribir y botón para mostrar/ocultar la contraseña",
+      "Si tenés varias usuarias, aparecen como botones para elegir con un toque",
+      "Botón 'Ingresar' grande, con spinner al validar y una sacudida si la contraseña es incorrecta",
+      "Contacto de soporte (WhatsApp 11 3857-4444) y versión del sistema visibles en la pantalla de login"
+    ],
+    "correcciones": []
+  },
   "v1.26.0": {
     "fecha": "2026-09-10",
     "titulo": "Datos de soporte y ventas siempre a mano",
