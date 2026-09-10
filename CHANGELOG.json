@@ -1,4 +1,17 @@
 {
+  "v1.25.0": {
+    "fecha": "2026-09-10",
+    "titulo": "Ventas más lindas y carrito que no se pierde",
+    "mejoras": [
+      "Rediseño visual del punto de venta: buscador más grande con foco rosa, talles como botones grandes con el stock en color (verde/amarillo/rojo), medios de pago más grandes que se pintan de rosa al elegirlos, TOTAL en número gigante y panel de vuelto grande y verde",
+      "Botones rápidos de descuento: 5% · 10% · 15% · 20% · 30% con un toque",
+      "INGRESAR ahora es un botón verde grande de ancho completo y FACTURAR uno rosa, más fáciles de apretar",
+      "Memoria del carrito: si cambiás de sección o cerrás la app con productos cargados, al volver a Ventas el carrito se restaura solo (con cliente, descuento y medio de pago). Si algún producto se quedó sin stock, se avisa y se quita",
+      "Pausar venta: nuevo botón para dejar una venta en espera (hasta 3 a la vez) y empezar otra; después la retomás desde la lista con un click. Ideal cuando una clienta 'va a buscar algo más'",
+      "Notificaciones más claras: verde al agregar, rojo si falta stock, gris al quitar, y duran 2 segundos"
+    ],
+    "correcciones": []
+  },
   "v1.24.0": {
     "fecha": "2026-09-10",
     "titulo": "Dashboard renovado, más completo y visual",
