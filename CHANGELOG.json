@@ -1,4 +1,14 @@
 {
+  "v1.23.0": {
+    "fecha": "2026-09-10",
+    "titulo": "Buscar y filtrar productos por talle",
+    "mejoras": [
+      "Nuevo botón '🔍 Buscar por talle' en Productos: escribí un talle (38, XL, 42…) y ves al instante qué tenés disponible, con los colores, el stock de cada uno y el precio. Cada resultado trae botón 'Agregar a venta' para venta rápida",
+      "Filtro por talle en Productos: junto a los filtros de categoría, un selector con los talles que realmente tenés en stock. Muestra solo los productos con stock en ese talle (producto, categoría, colores, stock, precio y proveedor), ordenados por categoría y nombre",
+      "Filtro por talle en el Punto de Venta: campo 'Talle' al lado del buscador. Cuando la clienta pide 'algo en talle 38', combinás la búsqueda con el talle y ves solo lo disponible; al elegir el producto ya queda pre-seleccionado ese talle"
+    ],
+    "correcciones": []
+  },
   "v1.21.0": {
     "fecha": "2026-07-27",
     "titulo": "Nuevo Dashboard e Informes semanales y mensuales",
