@@ -1,4 +1,13 @@
 {
+  "v1.43.0": {
+    "fecha": "2026-10-28",
+    "titulo": "Multi-caja en red local",
+    "novedades": [
+      "Multi-caja: hasta 3 registros compartiendo el mismo stock en red local LAN. Una PC es el servidor (tiene los datos) y las demás se conectan a ella; todas trabajan sobre los mismos productos, ventas, clientes y stock.",
+      "Cada venta queda registrada con el número de caja que la hizo, y se pueden filtrar las ventas por caja.",
+      "Si usás una sola PC no cambia nada: el modo 'Standalone' es el comportamiento de siempre."
+    ]
+  },
   "v1.42.9": {
     "fecha": "2026-10-13",
     "titulo": "Buscador del POS más claro y modo precio lista / efectivo",
