@@ -1,4 +1,14 @@
 {
+  "v1.43.2": {
+    "fecha": "2026-11-11",
+    "titulo": "Panel principal más rápido",
+    "novedades": [
+      "El Panel principal ahora carga más rápido: se agregó una caché en memoria de los datos (se refresca sola y se actualiza al instante cuando registrás o anulás una venta).",
+      "El total de Tienda Nube y los indicadores de conexión ya no frenan el primer dibujado del panel: el panel aparece enseguida con los datos locales y los de la web se suman cuando llegan.",
+      "Si Tienda Nube está lenta, el panel ya no se queda esperando: sigue mostrando los datos locales sin trabarse.",
+      "Mejoras internas de base de datos (índices) para que las consultas del panel sigan siendo veloces a medida que crece el historial de ventas."
+    ]
+  },
   "v1.43.1": {
     "fecha": "2026-11-11",
     "titulo": "Arreglo de pantalla negra al abrir el Panel",
