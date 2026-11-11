@@ -1,4 +1,12 @@
 {
+  "v1.43.1": {
+    "fecha": "2026-11-11",
+    "titulo": "Arreglo de pantalla negra al abrir el Panel",
+    "novedades": [
+      "Se corrigió la pantalla negra que aparecía unos segundos al abrir el Panel principal: ahora mientras cargan los datos se ven bloques grises animados (skeleton) con la forma real de las tarjetas, en vez de recuadros en negro.",
+      "Si la carga tarda más de 5 segundos, se muestra un aviso con un botón 'Reintentar' en lugar de quedar esperando."
+    ]
+  },
   "v1.43.0": {
     "fecha": "2026-10-28",
     "titulo": "Multi-caja en red local",
