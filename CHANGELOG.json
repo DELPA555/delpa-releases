@@ -1,4 +1,13 @@
 {
+  "v1.43.4": {
+    "fecha": "2026-11-12",
+    "titulo": "Cambios y devoluciones sincronizan con Tienda Nube",
+    "novedades": [
+      "Al registrar un cambio (devolución + nueva venta) o una devolución, el stock ahora se sincroniza automáticamente con Tienda Nube. Antes se actualizaba solo en el sistema y la tienda online quedaba desactualizada.",
+      "Se sincronizan tanto el producto que se devuelve (vuelve al stock) como el que se entrega (se descuenta).",
+      "La sincronización corre en segundo plano: el cambio se confirma al instante aunque Tienda Nube tarde, y si no tenés Tienda Nube conectada no pasa nada."
+    ]
+  },
   "v1.43.3": {
     "fecha": "2026-11-12",
     "titulo": "Arreglo de facturación AFIP (Factura B)",
