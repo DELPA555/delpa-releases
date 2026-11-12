@@ -1,4 +1,13 @@
 {
+  "v1.43.3": {
+    "fecha": "2026-11-12",
+    "titulo": "Arreglo de facturación AFIP (Factura B)",
+    "novedades": [
+      "Se corrigió un error de AFIP que impedía generar la Factura B: AFIP exige informar el IVA en el comprobante aunque la venta sea a consumidor final.",
+      "El IVA ahora se envía correctamente a AFIP tanto en Factura A como en Factura B. En el ticket impreso el IVA se discrimina solo en la Factura A; en la Factura B el cliente ve únicamente el total final, como corresponde a una venta al público.",
+      "La alícuota de IVA usada (21%, 10,5% o 27%) se toma de la configuración del negocio."
+    ]
+  },
   "v1.43.2": {
     "fecha": "2026-11-11",
     "titulo": "Panel principal más rápido",
