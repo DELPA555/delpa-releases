@@ -1,4 +1,16 @@
 {
+  "v1.44.0": {
+    "fecha": "2026-11-12",
+    "titulo": "Más gráficos en el panel, informes nuevos y exportación a Excel",
+    "novedades": [
+      "Panel: nuevo Top 5 de productos más vendidos del mes.",
+      "Panel: alerta de stock bajo que muestra los productos cuyo stock total (sumando todos los talles) quedó por debajo de 3 unidades.",
+      "Informes: nuevo informe de Métodos de pago, con totales por medio (efectivo, tarjeta, transferencia, etc.) filtrable por rango de fechas y con gráfico de torta.",
+      "Informes: nuevo informe de Cambios y devoluciones, que muestra qué productos se devuelven y se cambian más.",
+      "Exportar a Excel: los informes de Métodos de pago, Devoluciones, Por artículo y Sin movimiento ahora se pueden exportar a Excel (.xlsx) con un clic.",
+      "Mejoras internas de rendimiento: los nuevos widgets del panel usan la misma caché rápida que el resto."
+    ]
+  },
   "v1.43.4": {
     "fecha": "2026-11-12",
     "titulo": "Cambios y devoluciones sincronizan con Tienda Nube",
