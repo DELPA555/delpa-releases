@@ -1,4 +1,14 @@
 {
+  "v1.44.1": {
+    "fecha": "2026-11-17",
+    "titulo": "Productos sin talle: carga por Excel/CSV y edición en lote",
+    "novedades": [
+      "Importar por CSV: la plantilla y la exportación ahora incluyen la columna 'no_sizes' (poné 1 para accesorios, cosmética y todo lo que no usa talle) y 'stock_unico' para cargar su stock en una sola cantidad.",
+      "Al importar, un producto con no_sizes=1 queda marcado como sin talle y su stock va a una única unidad. Los archivos viejos sin esas columnas siguen funcionando igual: se respeta cómo estaba cada producto.",
+      "Listado de productos: seleccionando varios con los casilleros, aparecen dos botones nuevos: 'Sin talle' (los marca como talle único y junta su stock en una sola cantidad) y 'Con talle' (los vuelve a la grilla de talles).",
+      "Todo el cambio en lote se aplica de una sola vez sobre la base, de forma segura."
+    ]
+  },
   "v1.44.0": {
     "fecha": "2026-11-12",
     "titulo": "Más gráficos en el panel, informes nuevos y exportación a Excel",
