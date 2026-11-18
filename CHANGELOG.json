@@ -1,4 +1,14 @@
 {
+  "v1.44.2": {
+    "fecha": "2026-11-18",
+    "titulo": "Buscador de ventas siempre listo + seleccionar todos los productos",
+    "novedades": [
+      "Ventas: el buscador de productos ya no se queda trabado despues de cerrar un modal, modificar un producto o confirmar una venta. El foco vuelve solo al buscador y podes seguir tipeando enseguida, sin tener que hacer clic de nuevo.",
+      "Productos: en la edicion en lote, cuando marcas todos los de la pagina aparece la opcion Seleccionar todos (X productos) para abarcar TODO el sistema de una sola vez, al estilo Gmail, sin importar la paginacion.",
+      "Si tenes una busqueda o un filtro de categoria activos, Seleccionar todos aplica solo a esos resultados.",
+      "Con todos seleccionados, las acciones (marcar sin talle / con talle, cambiar categoria, aplicar descuento, etc.) se aplican a todos los productos en una sola operacion."
+    ]
+  },
   "v1.44.1": {
     "fecha": "2026-11-17",
     "titulo": "Productos sin talle: carga por Excel/CSV y edición en lote",
